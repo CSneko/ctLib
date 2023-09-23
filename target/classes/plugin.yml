@@ -1,0 +1,4 @@
+name: ctLib
+version: '0.0.1'
+main: com.crystalneko.ctlib.CtLib
+api-version: '1.20'
