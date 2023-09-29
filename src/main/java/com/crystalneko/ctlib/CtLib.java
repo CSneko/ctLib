@@ -8,8 +8,7 @@ public final class CtLib extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        //初始化聊天监听器
-        ChatPrefix = new chatPrefix(this);
+        System.out.println("国庆&中秋快乐！");
 
     }
 
