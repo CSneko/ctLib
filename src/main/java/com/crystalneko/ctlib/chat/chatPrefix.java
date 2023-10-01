@@ -74,7 +74,7 @@ public  class chatPrefix{
     /**
      * 获取私有前缀
      * @param player 玩家参数
-     * @return [前缀a§f§r][前缀b§f§r],如果玩家没有前缀则返回"notPrefix",如果没有任何前缀值则返回notAnyPrefix
+     * @return [前缀a§f§r][前缀b§f§r],如果玩家没有前缀则返回"[无前缀]",如果没有任何前缀值则返回[没有任何前缀]
      */
     public static String getPrivatePrefix(Player player) {
         if (privatePrefixNumber > 0) {
@@ -87,10 +87,10 @@ public  class chatPrefix{
                 }
                 return result.toString();
             } else {
-                return "notPrefix";
+                return "[无前缀]";
             }
         } else {
-            return "notAnyPrefix";
+            return "[没有任何前缀]";
         }
     }
     //减去数组的某一项
