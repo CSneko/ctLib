@@ -1,9 +1,7 @@
 package com.crystalneko.ctlib.chat;
 
-
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -70,11 +68,29 @@ public  class chatPrefix{
         privatePrefix[0] = deleteValue(privatePrefix[0],prefixValue);
         privatePrefix[1] = deleteValueWithNumberButNoMany(privatePrefix[1],deleteValueNumber);
     }
+    /**
+     * 获取所有公共前缀
+     * @return [前缀a§f§r][前缀b§f§r]
+     */
+    public static String getAllPublicPrefixValues() {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < PrefixesNumber; i++) {
+            result.append("[");
+            for (int j = 0; j < PrefixesValue[i].length; j++) {
+                result.append(PrefixesValue[i][j]);
+                if (j != PrefixesValue[i].length - 1) {
+                    result.append("§f§r");
+                }
+            }
+            result.append("]");
+        }
+        return result.toString();
+    }
 
     /**
      * 获取私有前缀
      * @param player 玩家参数
-     * @return [前缀a§f§r][前缀b§f§r],如果玩家没有前缀则返回"[无前缀]",如果没有任何前缀值则返回[没有任何前缀]
+     * @return [前缀a§f§r][前缀b§f§r],如果玩家没有前缀则返回"[无前缀]",如果没有任何前缀值则返回[无任何前缀]
      */
     public static String getPrivatePrefix(Player player) {
         if (privatePrefixNumber > 0) {
@@ -87,10 +103,10 @@ public  class chatPrefix{
                 }
                 return result.toString();
             } else {
-                return "[无前缀]";
+                return "[§a无前缀§f§r]";
             }
         } else {
-            return "[没有任何前缀]";
+            return "[§a无任何前缀§f§r]";
         }
     }
     //减去数组的某一项
