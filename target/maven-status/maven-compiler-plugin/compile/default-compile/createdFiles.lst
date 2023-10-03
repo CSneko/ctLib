@@ -1,3 +1,4 @@
 com/crystalneko/ctlib/CtLib.class
+com/crystalneko/ctlib/sql/sqlite.class
 com/crystalneko/ctlib/file/getYamlFile.class
 com/crystalneko/ctlib/chat/chatPrefix.class
