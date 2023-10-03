@@ -1,0 +1,20 @@
+sqlite:
+  #sqlite路径（基于服务器根目录）
+  path: "playerData.db"
+mysql:
+  #服务器域名
+  host: 127.0.0.1
+  #服务器端口
+  port: 3306
+  #数据库名
+  database: dbName
+  #用户名
+  username: example
+  #密码
+  password: password
+  #服务器时区
+  time: GMT
+  #sql编码
+  char: UTF-8
+  #是否使用ssl
+  useSSL: true

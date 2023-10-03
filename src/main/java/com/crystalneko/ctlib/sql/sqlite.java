@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class sqlite {
     private static Connection sqliteconnection;
-    private CtLib plugin;
+    private static CtLib plugin;
     public sqlite(CtLib plugin){
         this.plugin = plugin;
     }
@@ -18,7 +18,7 @@ public class sqlite {
         if (sqliteconnection != null && !sqliteconnection.isClosed()) {
             return sqliteconnection;
         }
-        String sqlitePath = "playerData.db";
+        String sqlitePath = plugin.getConfig().getString("sqlite.path");
         // 检查SQLite数据库文件是否存在
         File sqliteFile = new File(sqlitePath);
 
@@ -154,6 +154,24 @@ public class sqlite {
         } catch (SQLException e) {
             System.out.println(e);
             return new String[]{};
+        }
+    }
+    /**
+     * 删除一整行的数据
+     * @param tableName 表名
+     * @param whereColumn 条件所在列
+     * @param whereValue 条件值
+     * @return 是否成功删除
+     */
+    public static Boolean deleteLine(String tableName,String whereColumn,String whereValue){
+        String query = "DELETE FROM " + tableName + " WHERE " + whereColumn + " = ?";
+        try (PreparedStatement statement = sqliteconnection.prepareStatement(query)) {
+            statement.setString(1, whereValue);
+            statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e);
+            return false;
         }
     }
     /**

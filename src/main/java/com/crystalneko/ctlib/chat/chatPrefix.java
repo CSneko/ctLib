@@ -2,7 +2,9 @@ package com.crystalneko.ctlib.chat;
 
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 这个类是有关于聊天前缀的类，用于添加前缀，删除前缀，创建私人或公共前缀
@@ -48,13 +50,11 @@ public  class chatPrefix{
      * @param player 需要传入的玩家参数
      * @param prefixValue 前缀的值
      */
-    public static void addPrivatePrefix(Player player,String prefixValue){
-        //获取玩家名称
-        String playerName  = player.getDisplayName();
-        //将前缀和玩家名称写入数组
+    public static void addPrivatePrefix(Player player, String prefixValue) {
+        String playerName = player.getName();
         privatePrefix[0][privatePrefixNumber] = prefixValue;
         privatePrefix[1][privatePrefixNumber] = playerName;
-        privatePrefixNumber ++;
+        privatePrefixNumber++;
     }
     /**
      * 为玩家删除一个私有前缀
@@ -94,12 +94,11 @@ public  class chatPrefix{
      */
     public static String getPrivatePrefix(Player player) {
         if (privatePrefixNumber > 0) {
-            int[] index = getArrayIndexes(privatePrefix[1], player.getName());
-            if (index[0] != -1) {
-                String[] indexValue = getValuesByIndices(privatePrefix[0], index);
+            int[] indices = getArrayIndexes(privatePrefix[1], player.getName());
+            if (indices.length > 0 && indices[0] != -1) {
                 StringBuilder result = new StringBuilder();
-                for (String str : indexValue) {
-                    result.append("[").append(str).append("§f§r]");
+                for (int index : indices) {
+                    result.append("[").append(privatePrefix[0][index]).append("§f§r]");
                 }
                 return result.toString();
             } else {
@@ -176,18 +175,17 @@ public  class chatPrefix{
         return result;
     }
     //获取数组内的索引（如果值有多个）
-    public static int[] getArrayIndexes(String[] array, String playerName) {
-        int[] index = new int[]{-1};
+    private static int[] getArrayIndexes(String[] array, String playerName) {
+        List<Integer> indexes = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null) {
                 continue; // 跳过null元素
             }
             if (array[i].equals(playerName)) {
-                index[0] = i;
-                break;
+                indexes.add(i);
             }
         }
-        return index;
+        return indexes.stream().mapToInt(Integer::intValue).toArray();
     }
 
 }
