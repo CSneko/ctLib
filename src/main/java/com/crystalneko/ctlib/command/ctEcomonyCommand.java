@@ -18,16 +18,28 @@ public class ctEcomonyCommand implements CommandExecutor {
         if(player.hasPermission("ct.ecomony.command")) {
             if (args[0].equalsIgnoreCase("add") && args.length == 3) {
                 //添加余额
-                playerEcomony.addEcomony(String.valueOf(player.getUniqueId()), StringToInt(args[2], player));
+                if(playerEcomony.addEcomony(String.valueOf(player.getUniqueId()), StringToInt(args[2], player))){
+                    player.sendMessage("§a成功设置余额");
+                } else {
+                    player.sendMessage("§c设置余额失败");
+                }
             } else if(args[0].equalsIgnoreCase("sub") && args.length == 3){
                 //减少余额
-                playerEcomony.subEcomony(String.valueOf(player.getUniqueId()), StringToInt(args[2], player));
+                if(playerEcomony.subEcomony(String.valueOf(player.getUniqueId()), StringToInt(args[2], player))){
+                    player.sendMessage("§a成功设置余额");
+                }else {
+                   player.sendMessage("§c设置余额失败");
+                }
             } else if(args[0].equalsIgnoreCase("set") && args.length == 3){
                 //设置余额
-                playerEcomony.setEcomony(String.valueOf(player.getUniqueId()), StringToInt(args[2], player));
+                if(playerEcomony.setEcomony(String.valueOf(player.getUniqueId()), StringToInt(args[2], player))){
+                    player.sendMessage("§a成功设置余额");
+                } else {
+                    player.sendMessage("§c设置余额失败");
+                }
             }else if(args[0].equalsIgnoreCase("get") && args.length == 2){
                 //获取余额
-                playerEcomony.getEcomony(String.valueOf(player.getUniqueId()));
+                player.sendMessage("§a玩家"+args[1]+"的余额为§b"+playerEcomony.getEcomony(String.valueOf(player.getUniqueId())));
             }
             else if(args[0].equalsIgnoreCase("help")){
                 player.sendMessage("§b/cteco帮助\n§a/cteco add <玩家名称> <值> §b为玩家添加余额\n§a/cteco sub <玩家名称> <值> §b为玩家减少余额\n§a/cteco set <玩家名称> <值> §b为玩家设置余额\n§a/cteco get <玩家名称> <值> §b获取玩家的余额");

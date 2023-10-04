@@ -27,8 +27,10 @@ public final class CtLib extends JavaPlugin {
         } catch (SQLException e) {
             System.out.println(e);
         }
-        //创建mysql连接
-        this.mysql = new mysql(this);
+        if(getConfig().getBoolean("mysql.enable")) {
+            //创建mysql连接
+            this.mysql = new mysql(this);
+        }
         //注册监听器
         this.playerJoin = new onPlayerJoin(this);
         // -------------------------------------------------------------初始化------------------------------------------------------
