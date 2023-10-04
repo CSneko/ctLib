@@ -3,5 +3,6 @@ com/crystalneko/ctlib/sql/sqlite.class
 com/crystalneko/ctlib/event/onPlayerJoin.class
 com/crystalneko/ctlib/ecomony/playerEcomony.class
 com/crystalneko/ctlib/chat/chatPrefix.class
+com/crystalneko/ctlib/command/ctEcomonyCommand.class
 com/crystalneko/ctlib/sql/mysql.class
 com/crystalneko/ctlib/file/getYamlFile.class

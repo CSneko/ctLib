@@ -1,5 +1,6 @@
 package com.crystalneko.ctlib;
 
+import com.crystalneko.ctlib.command.ctEcomonyCommand;
 import com.crystalneko.ctlib.ecomony.playerEcomony;
 import com.crystalneko.ctlib.event.onPlayerJoin;
 import com.crystalneko.ctlib.sql.sqlite;
@@ -12,6 +13,8 @@ import java.sql.SQLException;
 public final class CtLib extends JavaPlugin {
     private mysql mysql;
     private onPlayerJoin playerJoin;
+    private playerEcomony playerEcomony;
+    private sqlite sqlite;
     @Override
     public void onEnable() {
         System.out.println("国庆&中秋快乐！");
@@ -19,6 +22,7 @@ public final class CtLib extends JavaPlugin {
         checkAndSaveResource("config.yml");
         //创建sqlite连接
         try {
+            this.sqlite = new sqlite(this);
             sqlite.createConnection();
         } catch (SQLException e) {
             System.out.println(e);
@@ -27,6 +31,10 @@ public final class CtLib extends JavaPlugin {
         this.mysql = new mysql(this);
         //注册监听器
         this.playerJoin = new onPlayerJoin(this);
+        // -------------------------------------------------------------初始化------------------------------------------------------
+        this.playerEcomony = new playerEcomony(this);
+        // -------------------------------------------------------------注册命令----------------------------------------------------
+        getCommand("ctecomony").setExecutor(new ctEcomonyCommand(this));
     }
 
 

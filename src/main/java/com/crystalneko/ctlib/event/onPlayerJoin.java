@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class onPlayerJoin implements Listener {
-    private String[] columName = {"uuid","Ecomony"};
+    private String[] columName = {"Ecomony","uuid"};
     private CtLib plugin;
     public onPlayerJoin(CtLib plugin){
         this.plugin = plugin;
@@ -24,9 +24,9 @@ public class onPlayerJoin implements Listener {
         String uuid = String.valueOf(player.getUniqueId());
         String[] columnValue = {"0","uuid"};
         //写入uuid
-        if(!mysql.checkValueExists("ctEcomony","uuid",uuid)) {
-            mysql.saveData("ctEcomony", "uuid", uuid);
+        if(!mysql.checkValueExists("ctEcomonyCommand","uuid",uuid)) {
+            mysql.saveData("ctEcomonyCommand", "uuid", uuid);
         }
-        mysql.saveDataWhere("ctEcomony",columName[0],"uuid",uuid,columnValue[0]);
+        mysql.saveDataWhere("ctEcomonyCommand",columName[0],"uuid",uuid,columnValue[0]);
     }
 }

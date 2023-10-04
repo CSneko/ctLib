@@ -33,11 +33,11 @@ import com.crystalneko.ctlib.ecomony.playerEcomony;
 //获取玩家的uuid
 String uuid = String.valueOf(player.getUniqueId());
 //为玩家添加5的余额
-addEcomony(uuid, 5);
+ctEcomony.addEcomony(uuid, 5);
 //为玩家减少5的余额
-subEcomony(uuid, 5);
+ctEcomony.subEcomony(uuid, 5);
 //获取玩家余额
-int value = getEcomony(uuid);
+int value = ctEcomony.getEcomony(uuid);
 //设置玩家的余额为10
-setEcomony(uuid,10);
+ctEcomony.setEcomony(uuid,10);
 ```

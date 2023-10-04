@@ -2,6 +2,8 @@ sqlite:
   #sqlite路径（基于服务器根目录）
   path: "playerData.db"
 mysql:
+  #mysql驱动
+  drive: "com.mysql.cj.jdbc.Driver"#旧版驱动: com.mysql.jdbc.Driver
   #服务器域名
   host: 127.0.0.1
   #服务器端口

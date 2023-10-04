@@ -8,7 +8,7 @@ public class playerEcomony {
     /**
      * 有关经济的类，数据存储在mysql里面
      */
-    private String[] columName = {"uuid","Ecomony"};
+    private String[] columName = {"Ecomony","uuid"};
     public playerEcomony(CtLib plugin){
         this.plugin = plugin;
         //创建表用于存储经济
@@ -22,13 +22,13 @@ public class playerEcomony {
      * @return 是否成功添加（成功则返回true）
      */
     public static Boolean addEcomony(String uuid, int value){
-        if(mysql.checkValueExists("ctEcomony","uuid",uuid)){
+        if(mysql.checkValueExists("ctEcomonyCommand","uuid",uuid)){
             //获取玩家的经济
-            int Ecomony = Integer.parseInt(mysql.getColumnValue("ctEcomony","Ecomony","uuid",uuid));
+            int Ecomony = Integer.parseInt(mysql.getColumnValue("ctEcomonyCommand","Ecomony","uuid",uuid));
             //添加值
             Ecomony = Ecomony + value;
             //将值写入数据库
-            mysql.saveDataWhere("ctEcomony","Ecomony","uuid",uuid, String.valueOf(Ecomony));
+            mysql.saveDataWhere("ctEcomonyCommand","Ecomony","uuid",uuid, String.valueOf(Ecomony));
             return true;
         }else {
             return false;
@@ -41,13 +41,13 @@ public class playerEcomony {
      * @return 是否成功减少（成功则返回true）
      */
     public static Boolean subEcomony(String uuid, int value){
-        if(mysql.checkValueExists("ctEcomony","uuid",uuid)){
+        if(mysql.checkValueExists("ctEcomonyCommand","uuid",uuid)){
             //获取玩家的经济
-            int Ecomony = Integer.parseInt(mysql.getColumnValue("ctEcomony","Ecomony","uuid",uuid));
+            int Ecomony = Integer.parseInt(mysql.getColumnValue("ctEcomonyCommand","Ecomony","uuid",uuid));
             //减少值
             Ecomony = Ecomony - value;
             //将值写入数据库
-            mysql.saveDataWhere("ctEcomony","Ecomony","uuid",uuid, String.valueOf(Ecomony));
+            mysql.saveDataWhere("ctEcomonyCommand","Ecomony","uuid",uuid, String.valueOf(Ecomony));
             return true;
         }else {
             return false;
@@ -60,9 +60,9 @@ public class playerEcomony {
      * @return 玩家的余额值
      */
     public static int getEcomony(String uuid){
-        if(mysql.checkValueExists("ctEcomony","uuid",uuid)){
+        if(mysql.checkValueExists("ctEcomonyCommand","uuid",uuid)){
             //获取玩家的经济
-            int Ecomony = Integer.parseInt(mysql.getColumnValue("ctEcomony","Ecomony","uuid",uuid));
+            int Ecomony = Integer.parseInt(mysql.getColumnValue("ctEcomonyCommand","Ecomony","uuid",uuid));
             return Ecomony;
         }else {
             return 0;
@@ -76,9 +76,9 @@ public class playerEcomony {
      * @return 是否设置成功（成功则返回true）
      */
     public static Boolean setEcomony(String uuid,int Value){
-        if(mysql.checkValueExists("ctEcomony","uuid",uuid)){
+        if(mysql.checkValueExists("ctEcomonyCommand","uuid",uuid)){
             //将值写入数据库
-            mysql.saveDataWhere("ctEcomony","Ecomony","uuid",uuid, String.valueOf(Value));
+            mysql.saveDataWhere("ctEcomonyCommand","Ecomony","uuid",uuid, String.valueOf(Value));
             return true;
         }else {
             return false;
@@ -91,7 +91,7 @@ public class playerEcomony {
     private void addSqliteColum(){
         int i =0;
         while (i <= 1) {
-            mysql.addColumn("ctEcomony", columName[i]);
+            mysql.addColumn("ctEcomonyCommand", columName[i]);
             i ++;
         }
     }

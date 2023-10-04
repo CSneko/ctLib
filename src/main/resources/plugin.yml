@@ -2,3 +2,10 @@ name: ctLib
 version: '${project.version}'
 main: com.crystalneko.ctlib.CtLib
 api-version: '1.20'
+commands:
+  ctecomony:
+    usage: /cteco help
+    aliases: [cte,cteco]
+permissions:
+  ct.ecomony:
+    default: false
