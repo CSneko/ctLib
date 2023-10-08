@@ -17,7 +17,30 @@ public class mysql {
         try {
             mysqlconnection = createConnection();
         } catch (SQLException e) {
-            System.out.println("无法连接mysql数据库");
+            throw new RuntimeException(e);
+        }
+        System.out.println("成功连接到数据库");
+        // 创建并启动异步任务
+        Thread reconnectionThread = new Thread(mysql::reconnect);
+        reconnectionThread.start();
+    }
+    public static void reconnect() {
+        while (true) {
+            try {
+                mysqlconnection = createConnection();
+                System.out.println("成功连接到数据库");
+                // 暂停1小时
+                Thread.sleep(3600000);
+            } catch (SQLException | InterruptedException e) {
+                System.out.println("无法连接到数据库");
+                e.printStackTrace();
+                // 等待一段时间后重试
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
     }
 

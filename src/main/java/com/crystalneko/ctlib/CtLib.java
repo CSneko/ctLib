@@ -17,7 +17,6 @@ public final class CtLib extends JavaPlugin {
     private sqlite sqlite;
     @Override
     public void onEnable() {
-        System.out.println("国庆&中秋快乐！");
         //创建配置文件
         checkAndSaveResource("config.yml");
         //创建sqlite连接
