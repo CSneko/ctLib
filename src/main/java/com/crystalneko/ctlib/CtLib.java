@@ -19,6 +19,7 @@ public final class CtLib extends JavaPlugin {
     public void onEnable() {
         //创建配置文件
         checkAndSaveResource("config.yml");
+
         //创建sqlite连接
         try {
             this.sqlite = new sqlite(this);
@@ -26,16 +27,19 @@ public final class CtLib extends JavaPlugin {
         } catch (SQLException e) {
             System.out.println(e);
         }
+        // -------------------------------------------------------------初始化------------------------------------------------------
+
         if(getConfig().getBoolean("mysql.enable")) {
             //创建mysql连接
             this.mysql = new mysql(this);
+            getCommand("ctecomony").setExecutor(new ctEcomonyCommand(this));
+            this.playerEcomony = new playerEcomony(this);
         }
         //注册监听器
         this.playerJoin = new onPlayerJoin(this);
-        // -------------------------------------------------------------初始化------------------------------------------------------
-        this.playerEcomony = new playerEcomony(this);
+
         // -------------------------------------------------------------注册命令----------------------------------------------------
-        getCommand("ctecomony").setExecutor(new ctEcomonyCommand(this));
+
     }
 
 

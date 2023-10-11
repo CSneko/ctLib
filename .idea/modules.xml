@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ctLib.iml" filepath="$PROJECT_DIR$/ctLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ctLibFabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ctLibFabric.test.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "ctlibfabric",
+  "version": "0.0.4",
+  "name": "ctLibFabric",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/CSNeko/ctLibFabricFabric"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/ctlibfabric/essentials/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.crystalneko.ctlibfabric.client.CtLibFabricClient"
+    ],
+    "main": [
+      "com.crystalneko.ctlibfabric.CtLibFabric"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.23",
+    "fabric": "*",
+    "minecraft": "1.20.2"
+  }
+}
