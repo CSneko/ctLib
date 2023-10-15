@@ -3,10 +3,12 @@
   "id": "ctlibfabric",
   "version": "0.0.4",
   "name": "ctLibFabric",
-  "description": "",
-  "authors": [],
+  "description": "https://github.com/CSNeko/ctLibFabricFabric",
+  "authors": ["CrystalNeko"],
   "contact": {
-    "repo": "https://github.com/CSNeko/ctLibFabricFabric"
+    "repo": "https://github.com/CSNeko/ctLibFabricFabric",
+    "issues": "https://github.com/CSNeko/ctLibFabricFabric/issues",
+    "homepage": "https://github.com/CSNeko/ctLibFabricFabric"
   },
   "license": "GPL-3.0",
   "icon": "assets/ctlibfabric/essentials/icon.png",

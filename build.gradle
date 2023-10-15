@@ -1,7 +1,23 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'com.github.johnrengelman:shadow:8.1.1'
+    }
+}
+
+
 plugins {
     id 'fabric-loom' version '1.2-SNAPSHOT'
     id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'java'
 }
+
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'java'
 
 version = project.mod_version
 group = project.maven_group
@@ -19,6 +35,27 @@ repositories {
     maven { url = 'https://oss.sonatype.org/content/groups/public/' }
 
 }
+shadowJar {
+    // 配置生成的 JAR 文件名称
+    archiveFileName = "ctLib-${version}.jar"
+
+    // 配置包含哪些依赖项
+    dependencies {
+        include(dependency("javax.servlet:javax.servlet-api:3.1.0"))
+        include(dependency("org.eclipse.jetty:jetty-server:9.4.46.v20220331"))
+        include(dependency("mysql:mysql-connector-java:8.0.26"))
+        include(dependency("com.sun.mail:javax.mail:1.6.2"))
+        include(dependency("javax.activation:activation:1.1.1"))
+        include(dependency("com.fasterxml.jackson.core:jackson-databind:2.15.2"))
+        include(dependency("com.fasterxml.jackson.core:jackson-core:2.12.5"))
+        include(dependency("com.fasterxml.jackson.core:jackson-annotations:2.12.5"))
+        include(dependency("com.google.protobuf:protobuf-java:3.18.1"))
+        include(dependency("commons-codec:commons-codec:1.15"))
+        include(dependency("org.xerial:sqlite-jdbc:3.34.0"))
+
+
+    }
+}
 
 dependencies {
     // To change the versions see the gradle.properties file
@@ -30,11 +67,17 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
     implementation 'javax.servlet:javax.servlet-api:3.1.0'
-    implementation 'org.eclipse.jetty:jetty-servlet:9.4.46.v20220331'
+    implementation 'org.eclipse.jetty:jetty-server:9.4.46.v20220331'
     implementation 'mysql:mysql-connector-java:8.0.26'
     implementation 'com.sun.mail:javax.mail:1.6.2'
     implementation 'javax.activation:activation:1.1.1'
-    implementation 'commons-codec:commons-codec:1.11'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.5'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.12.5'
+    implementation 'com.google.protobuf:protobuf-java:3.18.1'
+    implementation 'commons-codec:commons-codec:1.15'
+    implementation 'org.xerial:sqlite-jdbc:3.34.0'
+
 
 }
 
