@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 这个类是有关于聊天前缀的类，用于添加前缀，删除前缀，创建私人或公共前缀
+ * 这个类是有关于聊天前缀的类，用于添加前缀，删除前缀，创建私有或公共前缀
  */
 public  class chatPrefix{
 
@@ -61,13 +61,15 @@ public  class chatPrefix{
      * @param player 需要传入的玩家参数
      * @param prefixValue 前缀的值
      */
-    public static void subPrivatePrefix(Player player,String prefixValue){
-        //获取玩家名称
+    public static void subPrivatePrefix(Player player, String prefixValue){
         String playerName  = player.getName();
-        //将前缀和玩家名称从数组删除
-        privatePrefix[0] = deleteValue(privatePrefix[0],prefixValue);
-        privatePrefix[1] = deleteValueWithNumberButNoMany(privatePrefix[1],deleteValueNumber);
+        int[] indices = getArrayIndexes(privatePrefix[1], playerName);
+        if (indices.length > 0) {
+            privatePrefix[1] = deleteValueWithNumber(privatePrefix[1], indices[0]);
+            privatePrefix[0] = deleteValueWithNumber(privatePrefix[0], indices[0]);
+        }
     }
+
     /**
      * 获取所有公共前缀
      * @return [前缀a§f§r][前缀b§f§r]
@@ -113,7 +115,7 @@ public  class chatPrefix{
         int index = -1; // 初始化索引为-1，表示未找到要减去的项
         // 遍历数组，找到要减去的项的索引
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i].equals(itemToRemove)) {
+            if (arr[i] != null && arr[i].equals(itemToRemove)) {
                 index = i;
                 break;
             }
@@ -139,9 +141,17 @@ public  class chatPrefix{
     //减去数组中特定的项
     private static String[][] deleteValueWithNumber(String[][] arr,int index){
         for (int i = index; i < arr.length - 1; i++) {
-            arr[i] = arr[i + 1]; // 将后面的项依次向前移
+            arr[i] = arr[i + 1];
         }
-        arr = Arrays.copyOf(arr, arr.length - 1); // 删除最后一项
+        arr = Arrays.copyOf(arr, arr.length - 1);
+        return arr;
+    }
+
+    private static String[] deleteValueWithNumber(String[] arr,int index){
+        for (int i = index; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr = Arrays.copyOf(arr, arr.length - 1);
         return arr;
     }
     private static String[] deleteValueWithNumberButNoMany(String[] arr,int index){

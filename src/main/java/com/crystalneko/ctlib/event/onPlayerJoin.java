@@ -19,14 +19,16 @@ public class onPlayerJoin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        //初始化玩家经济余额
-        //获取玩家uuid
-        String uuid = String.valueOf(player.getUniqueId());
-        String[] columnValue = {"0","uuid"};
-        //写入uuid
-        if(!mysql.checkValueExists("ctEcomonyCommand","uuid",uuid)) {
-            mysql.saveData("ctEcomonyCommand", "uuid", uuid);
+        if(mysql.mysqlconnection != null) {
+            //初始化玩家经济余额
+            //获取玩家uuid
+            String uuid = String.valueOf(player.getUniqueId());
+            String[] columnValue = {"0", "uuid"};
+            //写入uuid
+            if (!mysql.checkValueExists("ctEcomonyCommand", "uuid", uuid)) {
+                mysql.saveData("ctEcomonyCommand", "uuid", uuid);
+            }
+            mysql.saveDataWhere("ctEcomonyCommand", columName[0], "uuid", uuid, columnValue[0]);
         }
-        mysql.saveDataWhere("ctEcomonyCommand",columName[0],"uuid",uuid,columnValue[0]);
     }
 }
