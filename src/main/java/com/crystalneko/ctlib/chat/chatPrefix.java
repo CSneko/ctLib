@@ -63,12 +63,17 @@ public  class chatPrefix{
      */
     public static void subPrivatePrefix(Player player, String prefixValue){
         String playerName  = player.getName();
-        int[] indices = getArrayIndexes(privatePrefix[1], playerName);
+        int[] indices = getArrayIndexesWithValue(privatePrefix[0], prefixValue);
         if (indices.length > 0) {
-            privatePrefix[1] = deleteValueWithNumber(privatePrefix[1], indices[0]);
-            privatePrefix[0] = deleteValueWithNumber(privatePrefix[0], indices[0]);
+            for (int i = indices.length - 1; i >= 0; i--) {
+                if (privatePrefix[1][indices[i]].equals(playerName)) {
+                    privatePrefix[1] = deleteValueWithNumber(privatePrefix[1], indices[i]);
+                    privatePrefix[0] = deleteValueWithNumber(privatePrefix[0], indices[i]);
+                }
+            }
         }
     }
+
 
     /**
      * 获取所有公共前缀
@@ -197,5 +202,18 @@ public  class chatPrefix{
         }
         return indexes.stream().mapToInt(Integer::intValue).toArray();
     }
+    private static int[] getArrayIndexesWithValue(String[] array, String value) {
+        List<Integer> indexes = new ArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                continue; // 跳过null元素
+            }
+            if (array[i].equals(value)) {
+                indexes.add(i);
+            }
+        }
+        return indexes.stream().mapToInt(Integer::intValue).toArray();
+    }
+
 
 }
