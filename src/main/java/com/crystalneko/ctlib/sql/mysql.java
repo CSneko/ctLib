@@ -1,72 +1,11 @@
 package com.crystalneko.ctlib.sql;
 
-import com.crystalneko.ctlib.CtLib;
-
 import java.sql.*;
 import java.util.ArrayList;
 
 public class mysql {
-    /**
-     * mysql写入方法
-     * 变量mysqlconnection为mysql连接
-     */
-    private static CtLib plugin;
-    public static Connection mysqlconnection;
-    public mysql(CtLib plugin){
-        this.plugin = plugin;
-        try {
-            mysqlconnection = createConnection();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println("成功连接到数据库");
-        // 创建并启动异步任务
-        Thread reconnectionThread = new Thread(mysql::reconnect);
-        reconnectionThread.start();
-    }
-    public static void reconnect() {
-        while (true) {
-            try {
-                mysqlconnection = createConnection();
-                System.out.println("成功连接到数据库");
-                // 暂停1小时
-                Thread.sleep(3600000);
-            } catch (SQLException | InterruptedException e) {
-                System.out.println("无法连接到数据库");
-                e.printStackTrace();
-                // 等待一段时间后重试
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-    }
+    public static Connection mysqlconnection = com.crystalneko.ctlibPublic.sql.mysql.mysqlconnection;
 
-    //mysql连接方法
-    public static Connection createConnection() throws SQLException {
-        // 解析MySQL配置
-        String mysqlHost = plugin.getConfig().getString("mysql.host");
-        int mysqlPort = plugin.getConfig().getInt("mysql.port");
-        String mysqlDatabase = plugin.getConfig().getString("mysql.database");
-        String mysqlUsername = plugin.getConfig().getString("mysql.username");
-        String mysqlPassword = plugin.getConfig().getString("mysql.password");
-        String mysqltime = plugin.getConfig().getString("mysql.time");
-        String mysqlchar = plugin.getConfig().getString("mysql.char");
-        Boolean mysqlusessl = plugin.getConfig().getBoolean("mysql.useSSL");
-        try {
-            Class.forName(plugin.getConfig().getString("mysql.drive"));
-            System.out.println("成功加载mysql驱动");
-        } catch (ClassNotFoundException e) {
-            System.out.println("加载mysql驱动失败");
-            e.printStackTrace();
-        }
-
-        // 构建MySQL连接字符串
-        String mysqlConnectionUrl = "jdbc:mysql://" + mysqlHost + ":" + mysqlPort + "/" + mysqlDatabase+ "?user="+mysqlUsername+ "&password="+mysqlPassword+"password&characterEncoding="+ mysqlchar +"&useSSL="+ mysqlusessl +"&serverTimezone="+mysqltime;
-        return DriverManager.getConnection(mysqlConnectionUrl, mysqlUsername, mysqlPassword);
-    }
     /**
      * 保存数据到数据库
      *

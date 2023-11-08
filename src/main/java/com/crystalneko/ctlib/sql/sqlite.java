@@ -1,41 +1,10 @@
 package com.crystalneko.ctlib.sql;
 
-import com.crystalneko.ctlib.CtLib;
-
-import java.io.File;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class sqlite {
-    private static Connection sqliteconnection;
-    private static CtLib plugin;
-    public sqlite(CtLib plugin){
-        this.plugin = plugin;
-    }
-    //你别管这些，直接调用即可
-    public static Connection createConnection() throws SQLException {
-        if (sqliteconnection != null && !sqliteconnection.isClosed()) {
-            return sqliteconnection;
-        }
-        String sqlitePath = plugin.getConfig().getString("sqlite.path");
-        // 检查SQLite数据库文件是否存在
-        File sqliteFile = new File(sqlitePath);
-
-        if (!sqliteFile.exists()) {
-            // 如果数据库文件不存在，尝试创建它
-            try {
-                sqliteFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // 构建SQLite连接字符串
-        String sqliteConnectionUrl = "jdbc:sqlite:" + sqlitePath;
-        sqliteconnection = DriverManager.getConnection(sqliteConnectionUrl);
-        return sqliteconnection;
-    }
+    private static Connection sqliteconnection = com.crystalneko.ctlibPublic.sql.sqlite.sqliteconnection;
     /**
      * 保存数据到数据库
      *

@@ -21,7 +21,7 @@ public class mysql {
         }
         System.out.println("成功连接到数据库");
         // 创建并启动异步任务
-        Thread reconnectionThread = new Thread(com.crystalneko.ctlib.sql.mysql::reconnect);
+        Thread reconnectionThread = new Thread(com.crystalneko.ctlibPublic.sql.mysql::reconnect);
         reconnectionThread.start();
     }
     public static void reconnect() {

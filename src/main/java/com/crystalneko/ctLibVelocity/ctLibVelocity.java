@@ -1,7 +1,7 @@
 package com.crystalneko.ctLibVelocity;
 
 import com.crystalneko.ctlibPublic.File.YamlConfiguration;
-import com.crystalneko.ctLibVelocity.sql.mysql;
+import com.crystalneko.ctlibPublic.sql.mysql;
 
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
@@ -60,7 +60,7 @@ public class ctLibVelocity {
         }
         //初始化mysql
         if(config.getBoolean("mysql.enable")){
-            this.mysql = new mysql(this);
+            this.mysql = new mysql(config);
         }
 
     }

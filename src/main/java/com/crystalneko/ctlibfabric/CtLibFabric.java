@@ -1,22 +1,18 @@
 package com.crystalneko.ctlibfabric;
 
-import com.crystalneko.ctlibfabric.sql.sqlite;
+import com.crystalneko.ctlibPublic.sql.sqlite;
 import net.fabricmc.api.ModInitializer;
 
-import java.sql.SQLException;
+import java.nio.file.Path;
+
 
 public class CtLibFabric implements ModInitializer {
-    /**
-     * Runs the mod initializer.
-     */
+
     @Override
     public void onInitialize() {
         //------------------------------------------------------初始化-------------------------------------------------
+
         //连接sqlite数据库
-        try {
-            sqlite.createConnection();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        new sqlite("ctlib/data.db");
     }
 }

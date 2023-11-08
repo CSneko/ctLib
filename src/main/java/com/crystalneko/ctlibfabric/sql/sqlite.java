@@ -1,47 +1,12 @@
 package com.crystalneko.ctlibfabric.sql;
 
 
-import java.io.File;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class sqlite {
-    private static Connection sqliteconnection;
+    private static Connection sqliteconnection = com.crystalneko.ctlibPublic.sql.sqlite.sqliteconnection;
 
-    public static Connection createConnection() throws SQLException {
-        if (sqliteconnection != null && !sqliteconnection.isClosed()) {
-            return sqliteconnection;
-        }
-
-        String sqlitePath = "ctlib/data.db";
-        // 检查SQLite数据库文件是否存在
-        File sqliteFile = new File(sqlitePath);
-
-        if (!sqliteFile.exists()) {
-            // 如果数据库文件不存在，尝试创建它所在的目录
-            File parentDir = sqliteFile.getParentFile();
-            if (parentDir != null) {
-                parentDir.mkdirs();
-            }
-            // 创建数据库文件
-            try {
-                sqliteFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        try {
-            Class.forName("org.sqlite.JDBC");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        // 构建SQLite连接字符串
-        String sqliteConnectionUrl = "jdbc:sqlite:" + sqlitePath;
-        sqliteconnection = DriverManager.getConnection(sqliteConnectionUrl);
-        return sqliteconnection;
-    }
     /**
      * 保存数据到数据库
      *
