@@ -37,6 +37,7 @@ public class ctLibVelocity {
     public static ctLibVelocity plugin;
     @Inject
     private PluginManager pluginManager;
+    public static String lang;
 
     @Inject
     public ctLibVelocity(ProxyServer server, Logger logger,@DataDirectory Path description) {
@@ -48,13 +49,14 @@ public class ctLibVelocity {
 
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
+        lang = "en_us";
         plugin = this;
         //初始化load
         final LibraryManager libraries = new VelocityLibraryManager<>(
                         logger, dataDirectory, pluginManager, this);
         new load(libraries);
         //运行基础配置
-        new base();
+        new base(lang);
         //判断是否存在配置文件
         if (!Files.exists(Paths.get("plugins/ctLib"))) {
             try {

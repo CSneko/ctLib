@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "ctlibfabric",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "name": "ctLibFabric",
   "description": "https://github.com/CSNeko/ctLibFabricFabric",
   "authors": ["CrystalNeko"],
@@ -25,5 +25,8 @@
     "fabricloader": ">=0.14.23",
     "fabric": "*",
     "minecraft": "1.20.2"
+  },
+  "suggests": {
+    "csnklib": "*"
   }
 }

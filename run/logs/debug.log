@@ -1,0 +1,25 @@
+[00:25:13] [main/INFO] (FabricLoader/GameProvider) Loading Minecraft 1.20.2 with Fabric Loader 0.14.23
+[00:25:13] [main/DEBUG] (FabricLoader/GamePatch) Found game constructor: net.minecraft.client.main.Main -> net.minecraft.client.MinecraftClient
+[00:25:13] [main/DEBUG] (FabricLoader/GamePatch) Patching game constructor <init>(Lnet/minecraft/client/RunArgs;)V
+[00:25:13] [main/DEBUG] (FabricLoader/GamePatch) Run directory field is thought to be net/minecraft/client/MinecraftClient/runDirectory
+[00:25:14] [main/DEBUG] (FabricLoader/GamePatch) Applying brand name hook to net/minecraft/client/ClientBrandRetriever::getClientModName
+[00:25:14] [main/DEBUG] (FabricLoader/GamePatch) Applying brand name hook to net/minecraft/server/MinecraftServer::getServerModName
+[00:25:14] [main/DEBUG] (FabricLoader/GamePatch) Patched 3 classs
+[00:25:14] [main/DEBUG] (FabricLoader/Discovery) Mod discovery time: 102.4 ms
+[00:25:14] [main/WARN] (FabricLoader/Resolution) Mod resolution failed
+[00:25:14] [main/INFO] (FabricLoader/Resolution) Immediate reason: [HARD_DEP ctlibfabric 0.0.9 {depends fabric @ [*]}, HARD_DEP_INCOMPATIBLE_PRESELECTED fabric-api 0.90.0+1.20.3 {depends minecraft @ [>=1.20.3- <1.20.4-]}, ROOT_FORCELOAD_SINGLE ctlibfabric 0.0.9]
+[00:25:14] [main/INFO] (FabricLoader/Resolution) Reason: [HARD_DEP fabric-api 0.90.0+1.20.3 {depends minecraft @ [>=1.20.3- <1.20.4-]}]
+[00:25:14] [main/INFO] (FabricLoader/Resolution) Fix: add [], remove [ctlibfabric 0.0.9], replace [[minecraft 1.20.2] -> add:minecraft 1.20.3- ([[1.20.3-,1.20.4-)])]
+[00:25:14] [main/ERROR] (FabricLoader) Incompatible mods found!
+net.fabricmc.loader.impl.FormattedException: Some of your mods are incompatible with the game or each other!
+A potential solution has been determined, this may resolve your problem:
+	 - Remove mod 'ctLibFabric' (ctlibfabric) 0.0.9 (/media/crystalneko/BA106C158B1B58EF/javatest/mods/ctLibFabric/build/resources/main).
+	 - Replace 'Minecraft' (minecraft) 1.20.2 with any version between 1.20.3- (inclusive) and 1.20.4- (exclusive).
+More details:
+	 - Mod 'Fabric API' (fabric-api) 0.90.0+1.20.3 requires any version between 1.20.3- (inclusive) and 1.20.4- (exclusive) of 'Minecraft' (minecraft), but only the wrong version is present: 1.20.2!
+	at net.fabricmc.loader.impl.FormattedException.ofLocalized(FormattedException.java:51) ~[fabric-loader-0.14.23.jar:?]
+	at net.fabricmc.loader.impl.FabricLoaderImpl.load(FabricLoaderImpl.java:194) ~[fabric-loader-0.14.23.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.init(Knot.java:146) ~[fabric-loader-0.14.23.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.Knot.launch(Knot.java:68) ~[fabric-loader-0.14.23.jar:?]
+	at net.fabricmc.loader.impl.launch.knot.KnotClient.main(KnotClient.java:23) ~[fabric-loader-0.14.23.jar:?]
+	at net.fabricmc.devlaunchinjector.Main.main(Main.java:86) ~[?:?]

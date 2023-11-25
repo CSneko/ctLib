@@ -8,10 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static com.crystalneko.ctlibPublic.lang.message.getMSG;
+
 public class base {
+    public static String lang;
 
-    public base(){
-
+    public base(String lang){
+        this.lang = lang;
         //创建必要目录
         createPath();
         //加载依赖
@@ -32,7 +35,7 @@ public class base {
             try {
                 Files.createDirectory(ctlib); // 创建目录
             } catch (IOException e) {
-                System.out.println("目录创建失败：" + e.getMessage());
+                System.out.println(getMSG("UnableToCreatePath") + e.getMessage());
             }
         }
         //--------------------------------------------------------创建数据目录------------------------------------------
@@ -41,7 +44,7 @@ public class base {
             try {
                 Files.createDirectory(data);
             } catch (IOException e){
-                System.out.println("目录创建失败：" + e.getMessage());
+                System.out.println(getMSG("UnableToCreatePath") + e.getMessage());
             }
         }
         //----------------------------------------------------创建依赖目录----------------------------------------------
@@ -50,7 +53,7 @@ public class base {
             try {
                 Files.createDirectory(libraries);
             } catch (IOException e){
-                System.out.println("目录创建失败：" + e.getMessage());
+                System.out.println(getMSG("UnableToCreatePath") + e.getMessage());
             }
         }
         //----------------------------------------------------创建缓存目录---------------------------------------------
@@ -59,7 +62,7 @@ public class base {
             try {
                 Files.createDirectory(libraries);
             } catch (IOException e){
-                System.out.println("目录创建失败：" + e.getMessage());
+                System.out.println(getMSG("UnableToCreatePath") + e.getMessage());
             }
         }
     }
@@ -69,7 +72,7 @@ public class base {
             try {
                 Files.delete(tempDir);
             } catch (IOException e) {
-                System.out.println("Unable to delete temp dir:"+e);
+                System.out.println(getMSG("UnableToRemovePath")+e);
             }
         }
     }

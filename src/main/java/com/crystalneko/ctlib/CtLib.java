@@ -26,15 +26,17 @@ public final class CtLib extends JavaPlugin {
     private sqlite sqlite;
     public static CtLib plugin;
     public static load load;
+    public static String lang;
     @Override
     public void onEnable() {
+        lang = "en_us";
         plugin = this;
         //初始化load
         LibraryManager libraryManager;
         libraryManager = new BukkitLibraryManager(this);
         load = new load(libraryManager);
         //运行基础配置
-        new base();
+        new base(lang);
         //创建配置文件
         checkAndSaveResource("config.yml");
         //配置文件变量

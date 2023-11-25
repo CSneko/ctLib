@@ -5,6 +5,8 @@ import com.crystalneko.ctlibPublic.File.YamlConfiguration;
 import java.sql.*;
 import java.util.ArrayList;
 
+import static com.crystalneko.ctlibPublic.lang.message.getMSG;
+
 public class mysql {
     /**
      * mysql写入方法
@@ -19,7 +21,7 @@ public class mysql {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("成功连接到数据库");
+        System.out.println(getMSG("ConnectToMysql"));
         // 创建并启动异步任务
         Thread reconnectionThread = new Thread(com.crystalneko.ctlibPublic.sql.mysql::reconnect);
         reconnectionThread.start();
@@ -28,11 +30,11 @@ public class mysql {
         while (true) {
             try {
                 mysqlconnection = createConnection();
-                System.out.println("成功连接到数据库");
+                System.out.println(getMSG("ConnectToMysql"));
                 // 暂停1小时
                 Thread.sleep(3600000);
             } catch (SQLException | InterruptedException e) {
-                System.out.println("无法连接到数据库");
+                System.out.println(getMSG("UnConnectToMysql"));
                 e.printStackTrace();
                 // 等待一段时间后重试
                 try {
@@ -57,9 +59,9 @@ public class mysql {
         Boolean mysqlusessl = config.getBoolean("mysql.useSSL");
         try {
             Class.forName(config.getString("mysql.drive"));
-            System.out.println("成功加载mysql驱动");
+            System.out.println("load mysql driver successfully");
         } catch (ClassNotFoundException e) {
-            System.out.println("加载mysql驱动失败");
+            System.out.println("Unable to load mysql driver");
             e.printStackTrace();
         }
 
