@@ -6,6 +6,11 @@ commands:
   ctecomony:
     usage: /cteco help
     aliases: [cte,cteco]
+  ctprefix:
+    usage : /ctprefix help
+    aliases:  [ctp,ctpf]
 permissions:
   ct.ecomony:
+    default: false
+  ct.prefix:
     default: false

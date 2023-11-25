@@ -1,11 +1,16 @@
 package com.crystalneko.ctlib;
 
 import com.crystalneko.ctlib.command.ctEcomonyCommand;
+import com.crystalneko.ctlib.command.ctPrefixCommand;
 import com.crystalneko.ctlib.ecomony.playerEcomony;
 import com.crystalneko.ctlib.event.onPlayerJoin;
+import com.crystalneko.ctlibPublic.base;
+import com.crystalneko.ctlibPublic.libraries.load;
 import com.crystalneko.ctlibPublic.sql.sqlite;
 import com.crystalneko.ctlibPublic.File.YamlConfiguration;
 import com.crystalneko.ctlibPublic.sql.mysql;
+import net.byteflux.libby.LibraryManager;
+import net.byteflux.libby.BukkitLibraryManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -19,8 +24,17 @@ public final class CtLib extends JavaPlugin {
     private onPlayerJoin playerJoin;
     private playerEcomony playerEcomony;
     private sqlite sqlite;
+    public static CtLib plugin;
+    public static load load;
     @Override
     public void onEnable() {
+        plugin = this;
+        //初始化load
+        LibraryManager libraryManager;
+        libraryManager = new BukkitLibraryManager(this);
+        load = new load(libraryManager);
+        //运行基础配置
+        new base();
         //创建配置文件
         checkAndSaveResource("config.yml");
         //配置文件变量
@@ -49,7 +63,7 @@ public final class CtLib extends JavaPlugin {
         this.playerJoin = new onPlayerJoin(this);
 
         // -------------------------------------------------------------注册命令----------------------------------------------------
-
+            getCommand("ctprefix").setExecutor(new ctPrefixCommand(this));
     }
 
 

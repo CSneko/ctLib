@@ -1,8 +1,8 @@
 sqlite:
-  #sqlite路径（基于服务器根目录）
-  path: "playerData.db"
+  #sqlite路径（基于根目录）
+  path: "ctlib/playerData.db"
 mysql:
-  #是否启用mysql？不启用会导致依赖于该插件的mysql部分无法运行，甚至报错
+  #是否启用mysql？不启用会导致依赖于该插件的mysql部分无法运行
   enable: false
   #mysql驱动
   drive: "com.mysql.cj.jdbc.Driver"#旧版驱动: com.mysql.jdbc.Driver

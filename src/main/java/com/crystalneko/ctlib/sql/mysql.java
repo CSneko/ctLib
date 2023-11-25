@@ -2,9 +2,9 @@ package com.crystalneko.ctlib.sql;
 
 import java.sql.*;
 import java.util.ArrayList;
+import static com.crystalneko.ctlibPublic.sql.mysql.mysqlconnection;
 
 public class mysql {
-    public static Connection mysqlconnection = com.crystalneko.ctlibPublic.sql.mysql.mysqlconnection;
 
     /**
      * 保存数据到数据库

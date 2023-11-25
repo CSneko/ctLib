@@ -2,9 +2,9 @@ package com.crystalneko.ctlib.sql;
 
 import java.sql.*;
 import java.util.ArrayList;
+import static com.crystalneko.ctlibPublic.sql.sqlite.sqliteconnection;
 
 public class sqlite {
-    private static Connection sqliteconnection = com.crystalneko.ctlibPublic.sql.sqlite.sqliteconnection;
     /**
      * 保存数据到数据库
      *

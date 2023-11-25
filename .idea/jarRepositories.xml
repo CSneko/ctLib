@@ -56,5 +56,10 @@
       <option name="name" value="papermc-repo" />
       <option name="url" value="https://repo.papermc.io/repository/maven-public/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="alessiodp" />
+      <option name="name" value="alessiodp" />
+      <option name="url" value="https://repo.alessiodp.com/releases/" />
+    </remote-repository>
   </component>
 </project>

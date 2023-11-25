@@ -11,8 +11,10 @@
         <autoDetectTypes>
           <platformType>SPIGOT</platformType>
           <platformType>FABRIC</platformType>
+          <platformType>VELOCITY</platformType>
           <platformType>MIXIN</platformType>
           <platformType>MCP</platformType>
+          <platformType>ADVENTURE</platformType>
         </autoDetectTypes>
       </configuration>
     </facet>

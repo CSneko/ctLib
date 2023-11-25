@@ -1,7 +1,7 @@
 package com.crystalneko.ctlib.event;
 
 import com.crystalneko.ctlib.CtLib;
-import com.crystalneko.ctlib.sql.mysql;
+import com.crystalneko.ctlibPublic.sql.mysql;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

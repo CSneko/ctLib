@@ -4,11 +4,10 @@ import com.crystalneko.ctLibVelocity.ctLibVelocity;
 
 import java.sql.*;
 import java.util.ArrayList;
+import static com.crystalneko.ctlibPublic.sql.mysql.mysqlconnection;
 
 public class mysql {
 
-    private static ctLibVelocity plugin;
-    public static Connection mysqlconnection = com.crystalneko.ctlibPublic.sql.mysql.mysqlconnection;
 
     /**
      * 保存数据到数据库
