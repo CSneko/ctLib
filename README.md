@@ -51,20 +51,4 @@ dependencies {
     implementation 'com.github.CSneko:ctLib:Tag'
 }
 ```
-## 下面是一些API的调用方法
-### 经济系统
-```java
-//导入API
-import com.crystalneko.ctlib.ecomony.playerEcomony;
-
-//获取玩家的uuid
-String uuid = String.valueOf(player.getUniqueId());
-//为玩家添加5的余额
-ctEcomony.addEcomony(uuid, 5);
-//为玩家减少5的余额
-ctEcomony.subEcomony(uuid, 5);
-//获取玩家余额
-int value = ctEcomony.getEcomony(uuid);
-//设置玩家的余额为10
-ctEcomony.setEcomony(uuid,10);
-```
+## 由于每次更新变化较大，因此暂时不建议将其设置为插件必须依赖
