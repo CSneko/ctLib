@@ -1,6 +1,5 @@
 package com.crystalneko.ctlibPublic.libraries;
 
-import com.crystalneko.ctlibfabric.libby.FabricLibraryManager;
 import net.byteflux.libby.Library;
 import net.byteflux.libby.LibraryManager;
 
@@ -9,15 +8,6 @@ public class load {
     public load(final LibraryManager manager){
         load.manager = manager;
         manager.addMavenCentral();
-    }
-
-    public static void initialize(final LibraryManager manager){
-        if (manager instanceof FabricLibraryManager) {
-            load.manager = manager;
-            manager.addMavenCentral();
-        } else {
-            throw new IllegalArgumentException("Invalid LibraryManager type: " + manager.getClass().getName());
-        }
     }
 
     public static void loadLib(String groupId, String artifactId, String version) {
@@ -32,8 +22,6 @@ public class load {
 
         manager.loadLibrary(library);
     }
-
-
 
 
 }

@@ -12,18 +12,20 @@ import static com.crystalneko.ctlibPublic.lang.message.getMSG;
 
 public class base {
     public static String lang;
-
+    public static String loader;
     public base(String lang){
         this.lang = lang;
         //创建必要目录
         createPath();
-        //加载依赖
-        load.loadLib("mysql","mysql-connector-java","8.0.26");
-        load.loadLib("com.sun.mail","javax.mail","1.6.2");
-        load.loadLib("commons-codec","commons-codec","1.15");
-        load.loadLib("org.xerial","sqlite-jdbc","3.34.0");
-        load.loadLib("org.xerial","sqlite-jdbc","3.34.0");
-        load.loadLib("org.jetbrains.kotlin","kotlin-stdlib","2.0.0-Beta1");
+        if(loader ==null || !loader.equalsIgnoreCase("fabric")) {
+            //加载依赖
+            load.loadLib("mysql", "mysql-connector-java", "8.0.26");
+            load.loadLib("com.sun.mail", "javax.mail", "1.6.2");
+            load.loadLib("commons-codec", "commons-codec", "1.15");
+            load.loadLib("org.xerial", "sqlite-jdbc", "3.34.0");
+            load.loadLib("org.xerial", "sqlite-jdbc", "3.34.0");
+            load.loadLib("org.jetbrains.kotlin", "kotlin-stdlib", "2.0.0-Beta1");
+        }
 
     }
 
