@@ -58,14 +58,14 @@ public final class CtLib extends JavaPlugin {
         if(getConfig().getBoolean("mysql.enable")) {
             //创建mysql连接
             this.mysql = new mysql(config);
-            getCommand("ctecomony").setExecutor(new ctEcomonyCommand(this));
-            this.playerEcomony = new playerEcomony(this);
+            //getCommand("ctecomony").setExecutor(new ctEcomonyCommand(this));
+            //this.playerEcomony = new playerEcomony(this);
         }
         //注册监听器
-        this.playerJoin = new onPlayerJoin(this);
+        //this.playerJoin = new onPlayerJoin(this);
 
         // -------------------------------------------------------------注册命令----------------------------------------------------
-            getCommand("ctprefix").setExecutor(new ctPrefixCommand(this));
+        getCommand("ctprefix").setExecutor(new ctPrefixCommand(this));
     }
 
 

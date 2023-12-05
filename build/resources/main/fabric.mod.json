@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "ctlibfabric",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "name": "ctLibFabric",
-  "description": "https://github.com/CSNeko/ctLibFabricFabric",
+  "description": "A library for data storage and more operations.",
   "authors": ["CrystalNeko"],
   "contact": {
     "repo": "https://github.com/CSNeko/ctLibFabricFabric",
@@ -22,11 +22,7 @@
     ]
   },
   "depends": {
-    "fabricloader": ">=0.14.23",
-    "fabric": "*",
-    "minecraft": "1.20.2"
-  },
-  "suggests": {
-    "csnklib": "*"
+    "fabricloader": "*",
+    "minecraft": "*"
   }
 }

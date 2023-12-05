@@ -15,6 +15,7 @@ public class sqlite {
 
     public sqlite(String path){
         sqlPath =path;
+
     }
     //你别管这些，直接调用即可
     public static Connection createConnection() throws SQLException {

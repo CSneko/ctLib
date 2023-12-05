@@ -26,7 +26,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 
-@Plugin(id = "ctlib", name = "ctLib", version = "${version}",
+@Plugin(id = "ctlib", name = "ctLib", version = "0.0.10",
         url = "https://w.csk.asia", description = "ctLib", authors = {"CrystalNeko"})
 public class ctLibVelocity {
     public static YamlConfiguration config;
