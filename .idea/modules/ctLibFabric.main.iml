@@ -10,6 +10,7 @@
       <configuration>
         <autoDetectTypes>
           <platformType>SPIGOT</platformType>
+          <platformType>FORGE</platformType>
           <platformType>FABRIC</platformType>
           <platformType>VELOCITY</platformType>
           <platformType>MIXIN</platformType>
