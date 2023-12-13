@@ -1,7 +1,7 @@
 package com.crystalneko.ctlibPublic;
 
 
-import com.crystalneko.ctlibPublic.libraries.load;
+import com.crystalneko.ctlibPublic.env.libraries;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,12 +19,12 @@ public class base {
         createPath();
         if(loader ==null || !loader.equalsIgnoreCase("fabric")) {
             //加载依赖
-            load.loadLib("mysql", "mysql-connector-java", "8.0.26");
-            load.loadLib("com.sun.mail", "javax.mail", "1.6.2");
-            load.loadLib("commons-codec", "commons-codec", "1.15");
-            load.loadLib("org.xerial", "sqlite-jdbc", "3.34.0");
-            load.loadLib("org.xerial", "sqlite-jdbc", "3.34.0");
-            load.loadLib("org.jetbrains.kotlin", "kotlin-stdlib", "2.0.0-Beta1");
+            libraries.load("mysql", "mysql-connector-java", "8.0.26");
+            libraries.load("com.sun.mail", "javax.mail", "1.6.2");
+            libraries.load("commons-codec", "commons-codec", "1.15");
+            libraries.load("org.xerial", "sqlite-jdbc", "3.34.0");
+            libraries.load("org.xerial", "sqlite-jdbc", "3.34.0");
+            libraries.load("org.jetbrains.kotlin", "kotlin-stdlib", "2.0.0-Beta1");
         }
 
     }

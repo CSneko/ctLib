@@ -1,11 +1,12 @@
 # ctLib
 ct系列插件的前置
-## 你只需要下载并放入服务器的插件文件夹就行了,当然，它同样支持Fabric1.20.2
+## 使用方法:
+如果你是玩家或服务器管理员，只需要放入`plugins`或`mods`文件夹即可，无需在意版本，因为它不会受到Minecraft版本的影响
 ## 配置文件 (`config.yml`)
 ```yaml
 sqlite:
   #sqlite路径（基于服务器根目录）
-  path: "playerData.db"
+  path: "ctlib/playerData.db"
 mysql:
   #服务器域名
   host: 127.0.0.1
@@ -24,6 +25,8 @@ mysql:
   #是否使用ssl
   useSSL: true
 ```
+## 注意事项:
+- 请不要删除`ctlib`文件夹及其文件夹内的任何文件，因为这回导致依赖于该插件的mod/插件数据丢失!
 ## 添加依赖(maven)
 ```xml
 <repositories>
@@ -51,4 +54,37 @@ dependencies {
     implementation 'com.github.CSneko:ctLib:Tag'
 }
 ```
-## 由于每次更新变化较大，因此暂时不建议将其设置为插件必须依赖
+## API
+#### 各端API包名:
+- 多端通用: `com.crystalneko.ctlibPublic`
+- Fabric: `com.crystalneko.ctlibfabric`
+- Forge: `com.crystalneko.ctlibForge`
+- Bukkit: `com.crystalneko.ctlib`
+- Velocity: `com.crystalneko.ctlibVelocity`
+### 调用示例
+```java
+import com.crystalneko.ctlibPublic.env.libraries;
+import com.crystalneko.ctlibPublic.inGame.chatPrefix;
+public class example{
+    //从maven中心仓库下载并加载库文件示例
+    public void loadLib(){
+        //该示例中，"mysql"为groupId,"mysql-connector-java"为artifactId，"8.0.26"为版本号
+        libraries.load("mysql", "mysql-connector-java", "8.0.26");
+    }
+    //聊天前缀示例(假设player为玩家)
+    public void chat(Player player){
+        //添加一个公共前缀
+        chatPrefix.addPublicPrefix("前缀");
+        //删除一个公共前缀
+        chatPrefix.subPublicPrefix("前缀");
+        //为玩家创建一个私有前缀
+        chatPrefix.addPrivatePrefix(player.getName(),"私有前缀");
+        //为玩家删除一个私有前缀
+        chatPrefix.subPrivatePrefix(player.getName(),"私有前缀");
+        //获取所有公共前缀
+        String publicPrefix = chatPrefix.getAllPublicPrefixValues();
+        //获取私有前缀
+        String privatePrefix = chatPrefix.getPrivatePrefix(player.getName());
+    }
+}
+```

@@ -5,7 +5,7 @@ import com.crystalneko.ctlib.command.ctPrefixCommand;
 import com.crystalneko.ctlib.ecomony.playerEcomony;
 import com.crystalneko.ctlib.event.onPlayerJoin;
 import com.crystalneko.ctlibPublic.base;
-import com.crystalneko.ctlibPublic.libraries.load;
+import com.crystalneko.ctlibPublic.env.libraries;
 import com.crystalneko.ctlibPublic.sql.sqlite;
 import com.crystalneko.ctlibPublic.File.YamlConfiguration;
 import com.crystalneko.ctlibPublic.sql.mysql;
@@ -25,7 +25,6 @@ public final class CtLib extends JavaPlugin {
     private playerEcomony playerEcomony;
     private sqlite sqlite;
     public static CtLib plugin;
-    public static load load;
     public static String lang;
     @Override
     public void onEnable() {
@@ -34,7 +33,7 @@ public final class CtLib extends JavaPlugin {
         //初始化load
         LibraryManager libraryManager;
         libraryManager = new BukkitLibraryManager(this);
-        load = new load(libraryManager);
+        new libraries(libraryManager);
         //运行基础配置
         new base(lang);
         //创建配置文件

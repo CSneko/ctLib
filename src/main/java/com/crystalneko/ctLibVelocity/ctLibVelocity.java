@@ -2,7 +2,7 @@ package com.crystalneko.ctLibVelocity;
 
 import com.crystalneko.ctlibPublic.File.YamlConfiguration;
 import com.crystalneko.ctlibPublic.base;
-import com.crystalneko.ctlibPublic.libraries.load;
+import com.crystalneko.ctlibPublic.env.libraries;
 import com.crystalneko.ctlibPublic.sql.mysql;
 
 import com.google.inject.Inject;
@@ -54,7 +54,7 @@ public class ctLibVelocity {
         //初始化load
         final LibraryManager libraries = new VelocityLibraryManager<>(
                         logger, dataDirectory, pluginManager, this);
-        new load(libraries);
+        new libraries(libraries);
         //运行基础配置
         new base(lang);
         //判断是否存在配置文件
