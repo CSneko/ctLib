@@ -1,7 +1,7 @@
 # ctLib
 ct系列插件的前置
 ## 使用方法:
-如果你是玩家或服务器管理员，只需要放入`plugins`或`mods`文件夹即可，无需在意版本，因为它不会受到Minecraft版本的影响
+如果你是玩家或服务器管理员，只需要放入`plugins`或`mods`文件夹即可，无需在意版本，因为它不会受到Minecraft版本的影响，它的唯一要求是java11
 ## 配置文件 (`config.yml`)
 ```yaml
 sqlite:
