@@ -48,6 +48,7 @@ repositories {
         name = "alessiodp"
         url = "https://repo.alessiodp.com/releases/"
     }
+    maven { url 'https://jitpack.io' }
 
     mavenCentral()
 }
@@ -58,7 +59,7 @@ repositories {
 
 shadowJar {
     if (loader == "Fabric"){
-        archiveFileName = "ctLibFabric-${version}.jar"
+        archiveFileName = "ctLibMod-${version}.jar"
     }else{
         archiveFileName = "ctLib-${version}.jar"
     }
@@ -66,8 +67,9 @@ shadowJar {
 
     dependencies {
         if (loader == "Fabric") {
-            include(dependency("commons-codec:commons-codec:1.15"))
-            include(dependency("org.xerial:sqlite-jdbc:3.34.0"))
+            //include(dependency("commons-codec:commons-codec:1.15"))
+            include(dependency("org.xerial:sqlite-jdbc:3.41.2.2"))
+            include(dependency(name: 'snakeyaml-2.2'))
         } else {
             include(dependency("net.byteflux:libby-velocity:1.3.0"))
             include(dependency("net.byteflux:libby-core:1.3.0"))
@@ -99,17 +101,16 @@ dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
     //implementation 'javax.servlet:javax.servlet-api:3.1.0'
     //implementation 'org.eclipse.jetty:jetty-server:9.4.46.v20220331'
-    implementation 'mysql:mysql-connector-java:8.0.26'
-    implementation 'com.sun.mail:javax.mail:1.6.2'
-    implementation 'javax.activation:activation:1.1.1'
-    implementation 'commons-codec:commons-codec:1.15'
-    implementation 'org.xerial:sqlite-jdbc:3.34.0'
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    //implementation 'com.sun.mail:javax.mail:1.6.2'
+    //implementation 'javax.activation:activation:1.1.1'
+    //implementation 'commons-codec:commons-codec:1.15'
+    implementation 'org.xerial:sqlite-jdbc:3.41.2.2'
     compileOnly "com.velocitypowered:velocity-api:3.2.0-SNAPSHOT"
     annotationProcessor "com.velocitypowered:velocity-api:3.2.0-SNAPSHOT"
-    implementation "com.fasterxml.jackson.core:jackson-databind:2.12.5"
-    implementation "com.fasterxml.jackson.core:jackson-core:2.12.5"
-    implementation "com.fasterxml.jackson.core:jackson-annotations:2.12.5"
-    implementation "com.mchange:c3p0:0.9.5.5"
+    //implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0-rc1'
+    //implementation "com.fasterxml.jackson.core:jackson-core:2.12.5"
+    //implementation "com.fasterxml.jackson.core:jackson-annotations:2.12.5"
     implementation 'net.byteflux:libby-velocity:1.3.0'
     implementation 'net.byteflux:libby-core:1.3.0'
     implementation "net.byteflux:libby-bukkit:1.3.0"
@@ -123,6 +124,7 @@ dependencies {
     implementation name: 'fmlcore-1.20-46.0.14'
     implementation name: 'javafmllanguage-1.20-46.0.14'
     implementation name: 'eventbus-6.2.0'
+    implementation name: 'snakeyaml-2.2'
 
 
 

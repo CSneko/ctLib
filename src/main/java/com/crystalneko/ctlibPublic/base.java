@@ -19,11 +19,10 @@ public class base {
         createPath();
         if(loader ==null || !loader.equalsIgnoreCase("fabric")) {
             //加载依赖
-            libraries.load("mysql", "mysql-connector-java", "8.0.26");
+            libraries.load("mysql", "mysql-connector-java", "8.0.28");
             libraries.load("com.sun.mail", "javax.mail", "1.6.2");
             libraries.load("commons-codec", "commons-codec", "1.15");
-            libraries.load("org.xerial", "sqlite-jdbc", "3.34.0");
-            libraries.load("org.xerial", "sqlite-jdbc", "3.34.0");
+            libraries.load("org.xerial", "sqlite-jdbc", "3.41.2.2");
             libraries.load("org.jetbrains.kotlin", "kotlin-stdlib", "2.0.0-Beta1");
         }
 
