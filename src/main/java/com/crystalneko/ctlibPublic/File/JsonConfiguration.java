@@ -1,7 +1,7 @@
 package com.crystalneko.ctlibPublic.File;
 
 import com.google.gson.Gson;
-import org.spongepowered.include.com.google.gson.reflect.TypeToken;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.FileWriter;
 import java.io.FileReader;
