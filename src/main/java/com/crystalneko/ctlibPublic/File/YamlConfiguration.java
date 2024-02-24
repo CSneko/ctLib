@@ -10,10 +10,11 @@ import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class YamlConfiguration {
-    private Map<String, Object> data;
+    private final Map<String, Object> data;
     private final Path path;
 
     public YamlConfiguration(Path path) throws IOException {
@@ -26,6 +27,12 @@ public class YamlConfiguration {
         } else {
             data = new LinkedHashMap<>();
         }
+    }
+
+    public YamlConfiguration(String yamlContent) {
+        Yaml yaml = new Yaml();
+        data = yaml.load(yamlContent);
+        this.path = null;
     }
 
     public Object get(String path) {
@@ -47,9 +54,17 @@ public class YamlConfiguration {
             current = (Map<String, Object>) current.computeIfAbsent(keys[i], k -> new LinkedHashMap<>());
         }
         current.put(keys[keys.length - 1], value);
+        try {
+            save();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void save() throws IOException {
+        if (path == null) {
+            return;
+        }
         DumperOptions options = new DumperOptions();
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
         Yaml yaml = new Yaml(options);
@@ -63,11 +78,34 @@ public class YamlConfiguration {
         return (String) get(path);
     }
 
+    public List<String> getStringList(String path) {
+        return (List<String>) get(path);
+    }
+
     public int getInt(String path) {
-        return (Integer) get(path);
+        Object value = get(path);
+        if(value != null){
+            return (Integer) value;
+        }else {
+            return 0;
+        }
     }
 
     public boolean getBoolean(String path) {
-        return (Boolean) get(path);
+        Object value = get(path);
+        if(value != null){
+            return (Boolean) value;
+        }else {
+            return false;
+        }
+    }
+
+    @Override
+    public String toString() {
+        DumperOptions options = new DumperOptions();
+        options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+        Yaml yaml = new Yaml(options);
+
+        return yaml.dump(data);
     }
 }

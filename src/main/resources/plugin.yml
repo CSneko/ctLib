@@ -1,5 +1,5 @@
 name: ctLib
-version: '0.0.13'
+version: '0.0.16'
 main: com.crystalneko.ctlib.CtLib
 api-version: '1.20'
 commands:

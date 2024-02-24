@@ -12,6 +12,9 @@ import java.net.URL;
 import java.util.Map;
 
 import com.crystalneko.ctlibPublic.File.JsonConfiguration;
+import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nullable;
 
 
 /**
@@ -26,7 +29,7 @@ public class httpGet {
      * @return 响应结果字符串，如果请求失败则返回null
      * @throws IOException 如果发生I/O错误则抛出异常
      */
-    public static String get(String url, Map<String, String> headers) throws IOException {
+    public static String get(String url, @Nullable Map<String, String> headers) throws IOException {
         URL u = new URL(url);
         HttpURLConnection conn = (HttpURLConnection) u.openConnection();
         conn.setRequestMethod("GET");
@@ -56,13 +59,28 @@ public class httpGet {
     }
 
     /**
+     * 新建线程发送GET请求并获取响应结果
+     * @param url 请求的URL地址
+     * @param headers 请求头参数，可以为null
+     */
+    public static void AsyncGet(@NotNull String url,@Nullable Map<String, String> headers) {
+        new Thread(() -> {
+            try {
+                get(url, headers);
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }).start();
+    }
+
+    /**
      * 发送GET请求并获取响应结果
      * @param url 请求的URL地址
      * @param headers 请求头参数，可以为null
      * @param defaultValue 默认值，在请求失败或返回结果为null时返回该值
      * @return 响应结果字符串，如果请求失败或返回结果为null则返回defaultValue
      */
-    public static String getString(String url, Map<String, String> headers, String defaultValue) {
+    public static String getString(@NotNull String url, @Nullable Map<String, String> headers, String defaultValue) {
         try {
             String response = get(url, headers);
             return response != null ? response : defaultValue;
@@ -79,7 +97,7 @@ public class httpGet {
      * @return JsonConfiguration对象，如果请求失败则抛出IOException异常
      * @throws IOException 如果发生I/O错误则抛出异常
      */
-    public static JsonConfiguration getJson(String url, Map<String, String> headers) throws IOException {
+    public static JsonConfiguration getJson(@NotNull String url, @Nullable Map<String, String> headers) throws IOException {
         String jsonString = get(url, headers);
         return new JsonConfiguration(jsonString);
     }
@@ -93,7 +111,7 @@ public class httpGet {
      * @return 下载成功则返回true，否则返回false
      * @throws IOException 如果发生I/O错误则抛出异常
      */
-    public static boolean getFile(String path, String url, Map<String, String> headers) throws IOException {
+    public static boolean getFile(@NotNull String path, @NotNull String url, @Nullable Map<String, String> headers) throws IOException {
         URL u = new URL(url);
         HttpURLConnection conn = (HttpURLConnection) u.openConnection();
         conn.setRequestMethod("GET");
@@ -132,7 +150,7 @@ public class httpGet {
      * @param url 文件下载的URL地址
      * @param headers 请求头参数，可以为null
      */
-    public static void asyncGetFile(String path, String url, Map<String, String> headers) {
+    public static void asyncGetFile(@NotNull String path,@NotNull String url,@Nullable Map<String, String> headers) {
         new Thread(() -> {
             try {
                 boolean success = getFile(path, url, headers);

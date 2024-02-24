@@ -18,17 +18,17 @@ public class JsonConfiguration {
 
     public JsonConfiguration(Path filePath) throws IOException {
         this.filePath = filePath;
+        gson = new Gson(); // 初始化 Gson 对象
         configData = loadConfigData(filePath);
-        gson = new Gson();
     }
 
     public JsonConfiguration(String jsonString) {
+        gson = new Gson(); // 初始化 Gson 对象
         if (jsonString == null) {
             configData = new HashMap<>();
         } else {
             configData = gson.fromJson(jsonString, new TypeToken<Map<String, Object>>() {}.getType());
         }
-        gson = new Gson();
     }
 
     private Map<String, Object> loadConfigData(Path filePath) throws IOException {
