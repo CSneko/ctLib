@@ -5,7 +5,6 @@ import com.crystalneko.ctlibPublic.File.YamlConfiguration;
 import java.sql.*;
 import java.util.ArrayList;
 
-import static com.crystalneko.ctlibPublic.lang.message.getMSG;
 
 @Deprecated
 public class mysql {
@@ -22,7 +21,6 @@ public class mysql {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        System.out.println(getMSG("ConnectToMysql"));
         // 创建并启动异步任务
         Thread reconnectionThread = new Thread(com.crystalneko.ctlibPublic.sql.mysql::reconnect);
         reconnectionThread.start();
@@ -31,11 +29,9 @@ public class mysql {
         while (true) {
             try {
                 mysqlconnection = createConnection();
-                System.out.println(getMSG("ConnectToMysql"));
                 // 暂停1小时
                 Thread.sleep(3600000);
             } catch (SQLException | InterruptedException e) {
-                System.out.println(getMSG("UnConnectToMysql"));
                 e.printStackTrace();
                 // 等待一段时间后重试
                 try {
