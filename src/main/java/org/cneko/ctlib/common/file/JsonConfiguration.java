@@ -1,17 +1,16 @@
-package com.crystalneko.ctlibPublic.File;
+package org.cneko.ctlib.common.file;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.FileWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
-@Deprecated
 public class JsonConfiguration {
     private Map<String, Object> configData;
     private Gson gson;

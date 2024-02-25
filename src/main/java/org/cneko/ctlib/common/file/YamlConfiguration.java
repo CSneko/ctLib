@@ -1,7 +1,7 @@
-package com.crystalneko.ctlibPublic.File;
+package org.cneko.ctlib.common.file;
 
-import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +13,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-@Deprecated
 public class YamlConfiguration {
     private final Map<String, Object> data;
     private final Path path;

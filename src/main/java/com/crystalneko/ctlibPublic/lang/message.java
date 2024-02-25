@@ -2,6 +2,7 @@ package com.crystalneko.ctlibPublic.lang;
 
 import static com.crystalneko.ctlibPublic.base.lang;
 
+@Deprecated
 public class message {
     public static String getMSG(String key){
         if(lang.equalsIgnoreCase("en_us")){

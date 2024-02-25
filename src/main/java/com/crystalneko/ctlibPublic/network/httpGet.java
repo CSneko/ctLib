@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 /**
  * HTTP客户端，用于发送HTTP Get请求并获取相应结果
  */
+@Deprecated
 public class httpGet {
 
     /**

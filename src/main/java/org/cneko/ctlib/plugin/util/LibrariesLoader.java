@@ -1,15 +1,15 @@
-package com.crystalneko.ctlibPublic.env;
+package org.cneko.ctlib.plugin.util;
 
 import net.byteflux.libby.Library;
 import net.byteflux.libby.LibraryManager;
-import org.cneko.ctlib.plugin.util.LibrariesLoader;
 
-import static org.cneko.ctlib.plugin.util.LibrariesLoader.manager;
-import static org.cneko.ctlib.plugin.util.LibrariesLoader.isLoad;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class libraries {
-
-    public libraries(final LibraryManager manager){
+public class LibrariesLoader {
+    public static LibraryManager manager;
+    public static Map<String,Boolean> isLoad = new ConcurrentHashMap<>();
+    public static void setManager(final LibraryManager manager){
         LibrariesLoader.manager = manager;
         LibrariesLoader.manager.addMavenCentral();
     }

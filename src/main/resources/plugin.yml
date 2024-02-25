@@ -1,17 +1,5 @@
 name: ctLib
-version: '0.0.16'
-main: com.crystalneko.ctlib.CtLib
-api-version: '1.20'
-commands:
-  ctecomony:
-    usage: /cteco help
-    aliases: [cte,cteco]
-  ctprefix:
-    usage : /ctprefix help
-    aliases:  [ctp,ctpf]
-permissions:
-  ct.ecomony:
-    default: false
-  ct.prefix:
-    default: false
+version: '0.1.0'
+main: org.cneko.ctlib.bootstrap.BukkitBootstrap
+api-version: '1.16'
 folia-supported: true

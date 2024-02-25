@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import static com.crystalneko.ctlibPublic.lang.message.getMSG;
 
+@Deprecated
 public class mysql {
     /**
      * mysql写入方法

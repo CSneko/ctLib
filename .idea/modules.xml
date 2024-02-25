@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.crystalneko.ctLibFabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.crystalneko.ctLibFabric.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ctLibFabric.iml" filepath="$PROJECT_DIR$/.idea/modules/ctLibFabric.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ctLibFabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ctLibFabric.test.iml" />

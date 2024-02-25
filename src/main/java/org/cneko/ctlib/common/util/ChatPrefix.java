@@ -1,17 +1,10 @@
-package com.crystalneko.ctlibPublic.inGame;
+package org.cneko.ctlib.common.util;
 
 import java.util.*;
 
-import static org.cneko.ctlib.common.util.ChatPrefix.privatePrefixes;
-
-import static org.cneko.ctlib.common.util.ChatPrefix.prefixes;
-
-/**
- * 这个类是有关于聊天前缀的类，用于添加前缀，删除前缀，创建私有或公共前缀
- */
-@Deprecated
-public class chatPrefix {
-
+public class ChatPrefix {
+    public static String[] prefixes = new String[]{};
+    public static Map<String, List<String>> privatePrefixes = new HashMap<>();
 
     /**
      * 这是玩家聊天前缀设置,用于添加公共前缀
@@ -28,7 +21,7 @@ public class chatPrefix {
      *
      * @param prefixName 聊天前缀名称（String）,这是个唯一的值，用于定义你的聊天前缀
      */
-    public static void subPublicPrefix(String prefixName) {
+    public static void removePublicPrefix(String prefixName) {
         List<String> prefixList = new ArrayList<>(Arrays.asList(prefixes));
         prefixList.remove(prefixName);
         prefixes = prefixList.toArray(new String[0]);
@@ -50,7 +43,7 @@ public class chatPrefix {
      * @param name        需要传入的玩家参数
      * @param prefixValue 前缀的值
      */
-    public static void subPrivatePrefix(String name, String prefixValue) {
+    public static void removePrivatePrefix(String name, String prefixValue) {
         List<String> playerPrefixes = privatePrefixes.get(name);
         if (playerPrefixes != null) {
             playerPrefixes.remove(prefixValue);
@@ -74,7 +67,7 @@ public class chatPrefix {
      * 获取私有前缀
      *
      * @param name 玩家参数
-     * @return [前缀a§f§r][前缀b§f§r],如果玩家没有前缀则返回"[无前缀]",如果没有任何前缀值则返回[无任何前缀]
+     * @return [前缀a§f§r][前缀b§f§r],如果玩家没有前缀则返回" "
      */
     public static String getPrivatePrefix(String name) {
         List<String> playerPrefixes = privatePrefixes.get(name);
@@ -85,7 +78,29 @@ public class chatPrefix {
             }
             return result.toString();
         } else {
-            return "[§a无前缀§f§r]";
+            return " ";
         }
     }
+
+    /**
+     * 获取所有公共前缀的原始值
+     *
+     * @return 所有公共前缀的原始值数组
+     */
+    public static String[] getAllPublicPrefixRawValues() {
+        return prefixes;
+    }
+
+    /**
+     * 获取指定玩家的所有私有前缀的原始值
+     *
+     * @param name 玩家参数
+     * @return 指定玩家的所有私有前缀的原始值列表
+     */
+    public static List<String> getPrivatePrefixRawValues(String name) {
+        return privatePrefixes.getOrDefault(name, new ArrayList<>());
+    }
+
+
+
 }

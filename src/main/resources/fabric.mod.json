@@ -6,19 +6,19 @@
   "description": "A library for data storage and more operations.",
   "authors": ["CrystalNeko"],
   "contact": {
-    "repo": "https://github.com/CSNeko/ctLibFabricFabric",
-    "issues": "https://github.com/CSNeko/ctLibFabricFabric/issues",
-    "homepage": "https://github.com/CSNeko/ctLibFabricFabric"
+    "repo": "https://github.com/CSNeko/ctLib",
+    "issues": "https://github.com/CSNeko/ctLib/issues",
+    "homepage": "https://github.com/CSNeko/ctLib"
   },
   "license": "GPL-3.0",
-  "icon": "assets/ctlib/essentials/icon.png",
+  "icon": "assets/ctlib/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "com.crystalneko.ctlibfabric.client.CtLibFabricClient"
+      "org.cneko.ctlib.bootstrap.FabricBootstrapClient"
     ],
     "main": [
-      "com.crystalneko.ctlibfabric.CtLibFabric"
+      "org.cneko.ctlib.bootstrap.FabricBootstrap"
     ]
   },
   "depends": {
