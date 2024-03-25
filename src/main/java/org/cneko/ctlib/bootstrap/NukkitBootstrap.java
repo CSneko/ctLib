@@ -4,7 +4,6 @@ import cn.nukkit.plugin.PluginBase;
 import net.byteflux.libby.LibraryManager;
 import net.byteflux.libby.NukkitLibraryManager;
 import org.cneko.ctlib.plugin.util.LibrariesLoader;
-
 import static org.cneko.ctlib.common.util.LocalDataBase.Connections.sqlite;
 
 public class NukkitBootstrap extends PluginBase {
@@ -27,6 +26,5 @@ public class NukkitBootstrap extends PluginBase {
 
     @Override
     public void onDisable() {
-        sqlite.disconnect();
     }
 }

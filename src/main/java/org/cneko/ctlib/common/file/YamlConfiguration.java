@@ -3,10 +3,7 @@ package org.cneko.ctlib.common.file;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
@@ -27,6 +24,9 @@ public class YamlConfiguration {
         } else {
             data = new LinkedHashMap<>();
         }
+    }
+    public YamlConfiguration(File file) throws IOException{
+        this(file.toPath());
     }
 
     public YamlConfiguration(String yamlContent) {
@@ -57,7 +57,7 @@ public class YamlConfiguration {
         try {
             save();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -72,6 +72,19 @@ public class YamlConfiguration {
         try (OutputStream out = Files.newOutputStream(path)) {
             yaml.dump(data, new OutputStreamWriter(out));
         }
+    }
+    public void save(Path targetPath) throws IOException {
+        DumperOptions options = new DumperOptions();
+        options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+        Yaml yaml = new Yaml(options);
+
+        try (OutputStream out = Files.newOutputStream(targetPath)) {
+            yaml.dump(data, new OutputStreamWriter(out));
+        }
+    }
+
+    public void save(File targetFile) throws IOException {
+        save(targetFile.toPath());
     }
 
     public String getString(String path) {
@@ -97,6 +110,14 @@ public class YamlConfiguration {
             return (Boolean) value;
         }else {
             return false;
+        }
+    }
+    public boolean getBoolean(String path,boolean defValue) {
+        Object value = get(path);
+        if(value != null){
+            return (Boolean) value;
+        }else {
+            return defValue;
         }
     }
 

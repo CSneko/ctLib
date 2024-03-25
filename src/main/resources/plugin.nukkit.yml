@@ -1,4 +1,4 @@
 name: ctLib
-version: '0.1.1'
+version: '0.1.2'
 author: CrystalNeko
 main: org.cneko.ctlib.bootstrap.NukkitBootstrap
