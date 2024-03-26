@@ -120,6 +120,9 @@ public class YamlConfiguration {
             return defValue;
         }
     }
+    public boolean isSet(String path) {
+        return get(path) != null;
+    }
 
     @Override
     public String toString() {

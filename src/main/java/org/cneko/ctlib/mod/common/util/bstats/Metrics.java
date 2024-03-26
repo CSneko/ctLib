@@ -52,13 +52,14 @@ public class Metrics {
      *     href="https://bstats.org/what-is-my-plugin-id">What is my plugin id?</a>
      */
     public Metrics(ModMeta plugin, int serviceId) {
+        System.out.println(serviceId);
         this.plugin = plugin;
         // Get the config file
         File bStatsFolder = new File(plugin.getDataFolder().getParentFile(), "bStats");
         File configFile = new File(bStatsFolder, "config.yml");
         try {
             YamlConfiguration config = new YamlConfiguration(configFile.toPath());
-            if (config.get("serverUuid")==null) {
+            if (!config.isSet("serverUuid")) {
                 config.set("enabled", true);
                 config.set("serverUuid", UUID.randomUUID().toString());
                 config.set("logFailedRequests", false);
@@ -66,7 +67,8 @@ public class Metrics {
                 config.set("logResponseStatusText", false);
                 try {
                     config.save(configFile);
-                } catch (IOException ignored) {
+                } catch (IOException e) {
+                    plugin.getLogger().log(Level.WARNING, "Failed to save bStats config!", e);
                 }
             }
             // Load the data
@@ -91,8 +93,8 @@ public class Metrics {
                             logErrors,
                             logSentData,
                             logResponseStatusText);
-        } catch (IOException g) {
-
+        } catch (IOException e) {
+            plugin.getLogger().log(Level.WARNING, "Failed to load bStats config!", e);
         }
 
     }

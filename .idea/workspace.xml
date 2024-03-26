@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="支持NukkitX">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/mod/util/ModMeta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/mod/util/bstats/Metrics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="添加bStats">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/NukkitBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/NukkitBootstrap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/YamlConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/YamlConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.nukkit.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.nukkit.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/mod/common/util/bstats/Metrics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/mod/common/util/bstats/Metrics.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +115,7 @@
       <recent name="com.crystalneko.velocity" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ctLib[Fabric]">
+  <component name="RunManager" selected="Gradle.ctLib[BFV]">
     <configuration name="ctLibFabric [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -317,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711265221055</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="添加bStats">
+      <option name="closed" value="true" />
+      <created>1711378119633</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1711378119633</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -329,6 +331,7 @@
     <MESSAGE value="添加异步get方法，修改文件管理" />
     <MESSAGE value="重构代码" />
     <MESSAGE value="支持NukkitX" />
-    <option name="LAST_COMMIT_MESSAGE" value="支持NukkitX" />
+    <MESSAGE value="添加bStats" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加bStats" />
   </component>
 </project>
