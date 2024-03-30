@@ -154,16 +154,20 @@ public class HttpGet {
         }
     }
 
-    public static class HttpGetObject {
-        private String url;
-        private Map<String, String> headers;
-        private String response;
-        private int responseCode = 0;
-        private String responseHeaders;
-
+    public static class HttpGetObject extends HttpBase.HttpBaseObject {
         public HttpGetObject(@NotNull String url, @Nullable Map<String, String> headers) {
-            this.url = url;
-            this.headers = headers;
+            super(url, headers);
+        }
+        public HttpGetObject(@NotNull String url) {
+            super(url);
+        }
+
+        /**
+         * 设置http请求方法
+         */
+        @Override
+        public HttpBase.HttpMethod getMethod(){
+            return HttpBase.HttpMethod.GET;
         }
 
         /**
@@ -172,152 +176,10 @@ public class HttpGet {
          * @throws IOException 如果发生I/O错误则抛出异常
          */
         public void get() throws IOException {
-            URL u = new URL(url);
-            HttpURLConnection conn = (HttpURLConnection) u.openConnection();
-            conn.setRequestMethod("GET");
-
-            if (headers != null) {
-                for (Map.Entry<String, String> entry : headers.entrySet()) {
-                    conn.setRequestProperty(entry.getKey(), entry.getValue());
-                }
-            }
-
-            int responseCode = conn.getResponseCode();
-            this.responseCode = responseCode;
-
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String line;
-
-                while ((line = in.readLine()) != null) {
-                    response.append(line);
-                }
-
-                in.close();
-                this.response = response.toString();
-            } else {
-                this.response = null;
-            }
-
-            // Save response headers
-            Map<String, java.util.List<String>> map = conn.getHeaderFields();
-            StringBuilder headers = new StringBuilder();
-            for (Map.Entry<String, java.util.List<String>> entry : map.entrySet()) {
-                headers.append(entry.getKey()).append(":").append(entry.getValue()).append("\n");
-            }
-            this.responseHeaders = headers.toString();
+            this.connect();
         }
 
 
-        /**
-         * 发送GET请求并获取响应结果（异步）
-         */
-        public void asyncGet() {
-            new Thread(() -> {
-                try {
-                    get();
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
-                }
-            }).start();
-        }
-
-
-        /**
-         * 设置url
-         *
-         * @param url 要设置的url
-         */
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        /**
-         * 设置请求头
-         *
-         * @param headers 要设置的请求头
-         */
-        public void setHeaders(Map<String, String> headers) {
-            this.headers = headers;
-        }
-
-        /**
-         * 获取响应文本
-         *
-         * @return 响应文本，如果请求失败则返回null
-         */
-        public String getResponse() {
-            return response;
-        }
-
-        /**
-         * 获取响应头
-         *
-         * @return 响应头字符串，如果请求失败则返回null
-         */
-        public String getResponseHeaders(){
-            return responseHeaders;
-        }
-
-        /**
-         * 获取状态码
-         *
-         * @return 状态码
-         */
-        public int getStatusCode(){
-            return responseCode;
-        }
-
-        /**
-         * 获取url
-         *
-         * @return url
-         */
-        public String getUrl(){
-            return this.url;
-        }
-
-        /**
-         * 获取请求头
-         * @return 请求头
-         */
-        public Map<String,String> getHeaders(){
-            return this.headers;
-        }
-
-        /**
-         * 保存到文件
-         *
-         * @param path 文件保存的路径
-         */
-        public void saveToFile(Path path) throws IOException {
-            if (response != null) {
-                try (BufferedWriter writer = Files.newBufferedWriter(path)) {
-                    writer.write(response);
-                }
-            } else {
-                throw new IllegalStateException("Response is null, cannot save to file.");
-            }
-        }
-
-        /**
-         * 获取Json
-         *
-         * @return JsonConfiguration对象
-         */
-        public JsonConfiguration getJson(){
-            return new JsonConfiguration(this.response);
-        }
-
-        /**
-         * 获取Yaml
-         *
-         * @return YamlConfiguration对象
-         */
-        public YamlConfiguration getYaml(){
-            return new YamlConfiguration(this.response);
-        }
 
 
 

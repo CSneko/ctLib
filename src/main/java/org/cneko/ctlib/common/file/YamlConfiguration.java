@@ -6,9 +6,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class YamlConfiguration {
     private final Map<String, Object> data;
@@ -25,7 +23,8 @@ public class YamlConfiguration {
             data = new LinkedHashMap<>();
         }
     }
-    public YamlConfiguration(File file) throws IOException{
+
+    public YamlConfiguration(File file) throws IOException {
         this(file.toPath());
     }
 
@@ -73,6 +72,7 @@ public class YamlConfiguration {
             yaml.dump(data, new OutputStreamWriter(out));
         }
     }
+
     public void save(Path targetPath) throws IOException {
         DumperOptions options = new DumperOptions();
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
@@ -95,33 +95,91 @@ public class YamlConfiguration {
         return (List<String>) get(path);
     }
 
+    public float getFloat(String path) {
+        Object value = get(path);
+        return (value instanceof Float) ? (Float) value : 0;
+    }
+
+    public double getDouble(String path) {
+        Object value = get(path);
+        return (value instanceof Double) ? (Double) value : 0;
+    }
+
     public int getInt(String path) {
         Object value = get(path);
-        if(value != null){
-            return (Integer) value;
-        }else {
-            return 0;
-        }
+        return (value instanceof Integer) ? (Integer) value : 0;
     }
 
     public boolean getBoolean(String path) {
         Object value = get(path);
-        if(value != null){
-            return (Boolean) value;
-        }else {
-            return false;
-        }
+        return (value instanceof Boolean) && (Boolean) value;
     }
-    public boolean getBoolean(String path,boolean defValue) {
+
+    public boolean getBoolean(String path, boolean defValue) {
         Object value = get(path);
-        if(value != null){
-            return (Boolean) value;
-        }else {
-            return defValue;
-        }
+        return (value instanceof Boolean) ? (Boolean) value : defValue;
     }
+
     public boolean isSet(String path) {
         return get(path) != null;
+    }
+
+    public boolean contains(String path) {
+        return isSet(path);
+    }
+
+    public ArrayList<Integer> getIntList(String path) {
+        Object value = get(path);
+        if (value instanceof List) {
+            ArrayList<Integer> list = new ArrayList<>();
+            for (Object obj : (List<?>) value) {
+                if (obj instanceof Integer) {
+                    list.add((Integer) obj);
+                }
+            }
+            return list;
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    public ArrayList<Double> getDoubleList(String path) {
+        Object value = get(path);
+        if (value instanceof List) {
+            ArrayList<Double> list = new ArrayList<>();
+            for (Object obj : (List<?>) value) {
+                if (obj instanceof Double) {
+                    list.add((Double) obj);
+                }
+            }
+            return list;
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    public ArrayList<Float> getFloatList(String path) {
+        Object value = get(path);
+        if (value instanceof List) {
+            ArrayList<Float> list = new ArrayList<>();
+            for (Object obj : (List<?>) value) {
+                if (obj instanceof Float) {
+                    list.add((Float) obj);
+                }
+            }
+            return list;
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    public ArrayList<Object> getList(String path) {
+        Object value = get(path);
+        if (value instanceof List) {
+            return new ArrayList<>((List<?>) value);
+        } else {
+            return new ArrayList<>();
+        }
     }
 
     @Override
@@ -129,7 +187,12 @@ public class YamlConfiguration {
         DumperOptions options = new DumperOptions();
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
         Yaml yaml = new Yaml(options);
-
         return yaml.dump(data);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj.toString().equals(this.toString());
+    }
+
 }

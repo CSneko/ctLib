@@ -52,7 +52,7 @@ public class Metrics {
      *     href="https://bstats.org/what-is-my-plugin-id">What is my plugin id?</a>
      */
     public Metrics(ModMeta plugin, int serviceId) {
-        System.out.println(serviceId);
+        System.out.println("Loading bStats id:"+serviceId);
         this.plugin = plugin;
         // Get the config file
         File bStatsFolder = new File(plugin.getDataFolder().getParentFile(), "bStats");
@@ -243,6 +243,7 @@ public class Metrics {
         }
 
         private void startSubmitting() {
+            System.out.println("bStats Collector");
             final Runnable submitTask =
                     () -> {
                         if (!enabled || !checkServiceEnabledSupplier) {
@@ -290,6 +291,7 @@ public class Metrics {
             scheduler.execute(
                     () -> {
                         try {
+                            System.out.println("Sending bStats metrics data"+data.toString());
                             // Send the data
                             sendData(data);
                         } catch (Exception e) {
