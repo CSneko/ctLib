@@ -49,12 +49,6 @@ repositories {
         url = "https://repo.alessiodp.com/releases/"
     }
     maven { url 'https://jitpack.io' }
-    maven {
-        url 'https://repo.nukkitx.com:443/maven-releases'
-    }
-    maven {
-        url 'https://repo.nukkitx.com:443/maven-snapshots'
-    }
 
     mavenCentral()
 }
@@ -125,7 +119,16 @@ dependencies {
     implementation 'net.byteflux:libby-nukkit:1.3.0'
     implementation 'net.minecraftforge.gradle:ForgeGradle:6.0.14'
     //implementation 'net.minecraftforge:forge:1.20-46.0.14'
-    implementation fileTree("libs")
+    implementation name: 'forge-1.20-46.0.14-universal'
+    implementation name: 'forge-1.20-46.0.14-userdev'
+    implementation name: 'fmlloader-1.20-46.0.14'
+    implementation name: 'fmlcore-1.20-46.0.14'
+    implementation name: 'javafmllanguage-1.20-46.0.14'
+    implementation name: 'eventbus-6.2.0'
+    implementation name: 'snakeyaml-2.2'
+    implementation name: 'nukkit-1.0-SNAPSHOT'
+    implementation name: 'loader-2.0.17'
+    implementation "net.neoforged:neoforge:20.4.210"
 
 
 }
@@ -143,7 +146,7 @@ processResources {
     }
 }
 
-def targetJavaVersion = 11
+def targetJavaVersion = 17
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
