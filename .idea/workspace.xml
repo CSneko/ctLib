@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="添加NeoForge支持，添加HttpPost，优化API，删除bStats">
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="添加NeoForge支持，添加HttpPost，优化API，删除bStats,取消支持java11">
+      <change afterPath="$PROJECT_DIR$/libs/forge-java11-0.0.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/synapse-api-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.nukkit.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.nukkit.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,26 +87,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Gradle.ctLibFabric [generateTemplates].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ctLibFabric build.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ctLib[BFV].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ctLib[Fabric].executor&quot;: &quot;Run&quot;,
-    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/crystalneko/BA106C158B1B58EF/javatest/mods/ctLibFabric&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.6310345&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.ctLibFabric [generateTemplates].executor": "Run",
+    "Gradle.ctLibFabric build.executor": "Run",
+    "Gradle.ctLib[BFV].executor": "Run",
+    "Gradle.ctLib[Fabric].executor": "Run",
+    "OverrideImplement.generate.javadoc": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/media/crystalneko/BA106C158B1B58EF/libs/jdk",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.6310345",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main" />
@@ -227,6 +232,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-bfa3237e" />
         <option value="jdk-17.0.9-corretto-17.0.9-f644763e9732-220112af" />
       </set>
     </attachedChunks>
@@ -336,7 +342,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711780511736</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="添加NeoForge支持，添加HttpPost，优化API，删除bStats,取消支持java11">
+      <option name="closed" value="true" />
+      <created>1711780989076</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711780989076</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -363,6 +377,7 @@
     <MESSAGE value="修复无法创建文件夹" />
     <MESSAGE value="添加NeoForge支持，添加HttpPost，优化API" />
     <MESSAGE value="添加NeoForge支持，添加HttpPost，优化API，删除bStats" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加NeoForge支持，添加HttpPost，优化API，删除bStats" />
+    <MESSAGE value="添加NeoForge支持，添加HttpPost，优化API，删除bStats,取消支持java11" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加NeoForge支持，添加HttpPost，优化API，删除bStats,取消支持java11" />
   </component>
 </project>
