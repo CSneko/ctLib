@@ -1,5 +1,5 @@
 name: ctLib
-version: '0.1.4'
+version: '0.1.5'
 author: CrystalNeko
 main: org.cneko.ctlib.bootstrap.BukkitBootstrap
 api-version: '1.16'
