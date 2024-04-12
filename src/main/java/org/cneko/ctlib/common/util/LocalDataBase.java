@@ -17,8 +17,8 @@ public class LocalDataBase {
         }
     }
     public static class Sqlite{
-        public  Connection connection;
-        public  String sqlPath;
+        public Connection connection;
+        public String sqlPath;
 
         public Sqlite(String path) throws SQLException {
             sqlPath =path;

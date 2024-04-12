@@ -194,5 +194,12 @@ public class YamlConfiguration {
     public boolean equals(Object obj) {
         return obj.toString().equals(this.toString());
     }
+    public boolean equalsCaseIgnoreCase(Object obj) {
+        if(obj.toString() != null) {
+            return obj.toString().equalsIgnoreCase(this.toString());
+        }else {
+            return false;
+        }
+    }
 
 }

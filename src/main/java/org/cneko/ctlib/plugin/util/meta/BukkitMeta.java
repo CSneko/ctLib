@@ -2,17 +2,18 @@ package org.cneko.ctlib.plugin.util.meta;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.cneko.ctlib.common.util.meta.ModMeta;
+import org.cneko.ctlib.common.util.meta.PluginMeta;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.logging.Logger;
 
-public class BukkitMeta implements ModMeta {
+
+public class BukkitMeta implements PluginMeta {
     private final JavaPlugin plugin;
-    private final ModMeta.Description description;
-    private final ModMeta.Server server;
+    private final PluginMeta.Description description;
+    private final PluginMeta.Server server;
     public BukkitMeta(JavaPlugin plugin) {
         this.plugin = plugin;
         this.description = new BukkitDescription(plugin);
@@ -20,12 +21,12 @@ public class BukkitMeta implements ModMeta {
     }
 
     @Override
-    public File getDataFolder() {
+    public @NotNull File getDataFolder() {
         return plugin.getDataFolder();
     }
 
     @Override
-    public Logger getLogger() {
+    public @NotNull Logger getLogger() {
         return plugin.getLogger();
     }
 
@@ -33,21 +34,21 @@ public class BukkitMeta implements ModMeta {
     public @NotNull Description getDescription() {
         return description;
     }
-
-
     @Override
     public @NotNull Server getServer() {
-        return null;
+        return server;
     }
-    public static class BukkitDescription implements ModMeta.Description {
+    public JavaPlugin getPlugin() {
+        return plugin;
+    }
+    public static class BukkitDescription implements PluginMeta.Description {
         private final JavaPlugin plugin;
         public BukkitDescription(JavaPlugin plugin) {
             this.plugin = plugin;
         }
 
-        @Nullable
         @Override
-        public String getName() {
+        public @NotNull String getName() {
             return plugin.getName();
         }
 
@@ -69,13 +70,12 @@ public class BukkitMeta implements ModMeta {
             return plugin.getDescription().getWebsite();
         }
 
-        @Nullable
         @Override
-        public String[] getAuthors() {
+        public String @javax.annotation.Nullable [] getAuthors() {
             return plugin.getDescription().getAuthors().toArray(new String[100]);
         }
     }
-    public static class BukkitServer implements ModMeta.Server {
+    public static class BukkitServer implements PluginMeta.Server {
         @Override
         public boolean isOnlineMode() {
             return Bukkit.getOnlineMode();
@@ -100,6 +100,29 @@ public class BukkitMeta implements ModMeta {
         @Override
         public int getPlayerAmount() {
             return Bukkit.getOnlinePlayers().size();
+        }
+
+        @Override
+        public int getMaxPlayers() {
+            return Bukkit.getMaxPlayers();
+        }
+
+
+        @Nullable
+        @Override
+        public GameMode getServerGamemode() {
+            switch (Bukkit.getDefaultGameMode()){
+                case SURVIVAL:
+                    return GameMode.SURVIVAL;
+                case CREATIVE:
+                    return GameMode.CREATIVE;
+                case ADVENTURE:
+                    return GameMode.ADVENTURE;
+                case SPECTATOR:
+                    return GameMode.SPECTATOR;
+                default:
+                    return GameMode.UNKNOWN;
+            }
         }
 
 

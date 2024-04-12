@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="添加NeoForge支持，添加HttpPost，优化API，删除bStats,取消支持java11">
-      <change afterPath="$PROJECT_DIR$/libs/forge-java11-0.0.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" afterDir="false" />
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="修改ModMeta类">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/com.crystalneko.ctLibFabric.test.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.nukkit.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.nukkit.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/JsonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/JsonConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/YamlConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/YamlConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/LocalDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/LocalDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/base/StringUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/base/StringUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/meta/ModMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/meta/PluginMeta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/plugin/util/meta/BukkitMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/plugin/util/meta/BukkitMeta.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,11 +93,11 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.ctLibFabric [:StringUtil.main()].executor": "Run",
     "Gradle.ctLibFabric [generateTemplates].executor": "Run",
     "Gradle.ctLibFabric build.executor": "Run",
     "Gradle.ctLib[BFV].executor": "Run",
     "Gradle.ctLib[Fabric].executor": "Run",
-    "OverrideImplement.generate.javadoc": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -118,10 +120,11 @@
       <recent name="$PROJECT_DIR$/src/main/resources/assets/" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.cneko.ctlib.plugin.util" />
       <recent name="com.crystalneko.velocity" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ctLib[Fabric]">
+  <component name="RunManager" selected="Gradle.ctLibFabric build">
     <configuration name="ctLibFabric [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -350,7 +353,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711780989076</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="修改ModMeta类">
+      <option name="closed" value="true" />
+      <created>1712846763347</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1712846763347</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -378,6 +389,7 @@
     <MESSAGE value="添加NeoForge支持，添加HttpPost，优化API" />
     <MESSAGE value="添加NeoForge支持，添加HttpPost，优化API，删除bStats" />
     <MESSAGE value="添加NeoForge支持，添加HttpPost，优化API，删除bStats,取消支持java11" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加NeoForge支持，添加HttpPost，优化API，删除bStats,取消支持java11" />
+    <MESSAGE value="修改ModMeta类" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改ModMeta类" />
   </component>
 </project>
