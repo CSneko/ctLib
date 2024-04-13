@@ -42,6 +42,13 @@ public interface PluginMeta {
          */
         @NotNull
         String getName();
+
+        /**
+         * 获取插件ID
+         * @return 插件ID
+         */
+        @NotNull
+        String getId();
         /**
          * 获取插件版本
          *

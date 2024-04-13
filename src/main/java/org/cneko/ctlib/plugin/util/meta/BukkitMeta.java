@@ -47,9 +47,15 @@ public class BukkitMeta implements PluginMeta {
             this.plugin = plugin;
         }
 
+
         @Override
         public @NotNull String getName() {
             return plugin.getName();
+        }
+
+        @Override
+        public @NotNull String getId() {
+            return plugin.getDescription().getName();
         }
 
         @Nullable
@@ -71,7 +77,7 @@ public class BukkitMeta implements PluginMeta {
         }
 
         @Override
-        public String @javax.annotation.Nullable [] getAuthors() {
+        public String  [] getAuthors() {
             return plugin.getDescription().getAuthors().toArray(new String[100]);
         }
     }
