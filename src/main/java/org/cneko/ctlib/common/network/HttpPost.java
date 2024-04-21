@@ -72,20 +72,17 @@ public class HttpPost {
             int responseCode = conn.getResponseCode();
             this.responseCode = responseCode;
 
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String line;
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String line;
 
-                while ((line = in.readLine()) != null) {
-                    response.append(line);
-                }
-
-                in.close();
-                this.response = response.toString();
-            } else {
-                this.response = null;
+            while ((line = in.readLine()) != null) {
+                response.append(line);
             }
+
+            in.close();
+            this.response = response.toString();
+
 
             // Save response headers
             Map<String, List<String>> map = conn.getHeaderFields();

@@ -1,8 +1,15 @@
 package org.cneko.ctlib.common.file;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+import org.cneko.ctlib.common.util.base.FileUtil;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,7 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JsonConfiguration {
+public class JsonConfiguration implements Configure{
+    private String original;
     private Map<String, Object> configData;
     private Gson gson;
     private Path filePath;
@@ -22,6 +30,7 @@ public class JsonConfiguration {
         this.filePath = filePath;
         gson = new Gson();
         configData = loadConfigData(filePath);
+        original = FileUtil.readFileWithException(filePath.toString());
     }
 
     public JsonConfiguration(String jsonString) {
@@ -31,6 +40,7 @@ public class JsonConfiguration {
         } else {
             configData = gson.fromJson(jsonString, new TypeToken<Map<String, Object>>() {}.getType());
         }
+        original = jsonString;
     }
 
     private Map<String, Object> loadConfigData(Path filePath) throws IOException {
@@ -100,24 +110,49 @@ public class JsonConfiguration {
     }
 
     public Object get(String key) {
-        String[] keys = key.split("\\.");
-        Object value = configData;
-        for (String k : keys) {
-            if (value instanceof Map) {
-                value = ((Map<String, Object>) value).get(k);
-            } else if (value instanceof List && k.matches("\\d+")) {
-                int index = Integer.parseInt(k);
-                List<Object> list = (List<Object>) value;
-                if (index >= 0 && index < list.size()) {
-                    value = list.get(index);
-                } else {
-                    return null;
-                }
-            } else {
-                return null;
+        // 首先尝试直接读取键值
+        Object value = getValue(configData, key);
+        if (value != null) {
+            return value;
+        }
+
+        // 如果直接读取失败，则尝试读取位于父键值的子键值
+        String parentKey = getParentKey(key);
+        if (parentKey != null) {
+            Object parentValue = getValue(configData, parentKey);
+            if (parentValue instanceof Map) {
+                return getValue(parentValue, getLastKey(key));
             }
         }
-        return value;
+
+        // 如果找不到父键值，则直接返回null
+        return null;
+    }
+
+    // 获取键值
+    private Object getValue(Object object, String key) {
+        if (object instanceof Map) {
+            return ((Map<String, Object>) object).get(key);
+        } else {
+            return null;
+        }
+    }
+
+    // 获取父键值
+    private String getParentKey(String key) {
+        int lastIndex = key.lastIndexOf(".");
+        return lastIndex != -1 ? key.substring(0, lastIndex) : null;
+    }
+
+    // 获取最后一个键
+    private String getLastKey(String key) {
+        int lastIndex = key.lastIndexOf(".");
+        return lastIndex != -1 ? key.substring(lastIndex + 1) : key;
+    }
+
+    @Override
+    public boolean isSet(String path) {
+        return get(path) != null;
     }
 
     public ArrayList<String> getStringList(String key) {
@@ -208,6 +243,26 @@ public class JsonConfiguration {
         return get(key) != null;
     }
 
+    /**
+     * 转换为JsonList，如果自身不是一个数组，返回空列表
+     * @return Json数组
+     */
+    public ArrayList<JsonConfiguration> toJsonList() {
+        ArrayList<JsonConfiguration> jsonList = new ArrayList<>();
+        JsonElement element = new Gson().fromJson(this.toString(), JsonElement.class);
+        if (element.isJsonArray()) {
+            JsonArray jsonArray = element.getAsJsonArray();
+            for (JsonElement jsonElement : jsonArray) {
+                if (jsonElement.isJsonObject()) {
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
+                    jsonList.add(new JsonConfiguration(jsonObject.toString()));
+                }
+            }
+        }
+        return jsonList;
+    }
+
+
     public JsonConfiguration getJsonConfiguration(String key) {
         Object value = get(key);
         if (value instanceof Map) {
@@ -227,19 +282,56 @@ public class JsonConfiguration {
         }
     }
 
+    public String getOriginal() {
+        return original;
+    }
     @Override
     public String toString() {
         return gson.toJson(configData);
     }
+
     public boolean equals(Object obj) {
         return obj.toString().equals(this.toString());
     }
+
     public boolean equalsCaseIgnoreCase(Object obj) {
         if(obj.toString() != null) {
             return obj.toString().equalsIgnoreCase(this.toString());
         }else {
             return false;
         }
+    }
+
+    @Override
+    public Config toConfig() {
+        return new Config(this);
+    }
+
+    /**
+     * 尝试将json 转换为yaml
+     * @return 转换后的Yaml
+     */
+    public YamlConfiguration toYaml() {
+        // 将 JSON 字符串转换为 Map
+        Map<String, Object> map = gson.fromJson(original, new TypeToken<Map<String, Object>>() {}.getType());
+
+        // 设置 YAML 输出格式
+        DumperOptions options = new DumperOptions();
+        options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+        Yaml yaml = new Yaml(options);
+
+        // 将 Map 转换为 YAML 格式的字符串
+        return YamlConfiguration.of(yaml.dump(map));
+    }
+
+    public static JsonConfiguration fromFile(Path filePath) throws IOException{
+        return new JsonConfiguration(filePath);
+    }
+    public static JsonConfiguration fromFile(File file) throws IOException{
+        return new JsonConfiguration(file.toPath());
+    }
+    public static JsonConfiguration of(String jsonString) {
+        return new JsonConfiguration(jsonString);
     }
 
 }

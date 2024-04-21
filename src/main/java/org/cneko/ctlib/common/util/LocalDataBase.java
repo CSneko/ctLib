@@ -1,5 +1,7 @@
 package org.cneko.ctlib.common.util;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
@@ -16,7 +18,23 @@ public class LocalDataBase {
             }
         }
     }
-    public static class Sqlite{
+    public static interface Sql{
+        void executeSQL(String sql);
+        void disconnect();
+        void saveData(String tableName, String columnName, String data);
+        boolean checkValueExists(String tableName, String columnName, String value);
+        void saveDataWhere(String tableName, String columnName, String whereName, String whereValue, String columnValue);
+        String getColumnValue(String tableName, String columnName, String whereName, String whereValue);
+        String[] readAllValueInAColumn(String tableName, String columnName);
+        boolean deleteLine(String tableName, String whereColumn, String whereValue);
+        boolean isTableExists(String tableName);
+        void createTable(String tableName);
+        boolean isColumnExists(String tableName, String columnName);
+        void addColumn(String tableName, String columnName);
+        boolean checkColumnExists(String tableName, String columnName);
+        ResultSet executeSQLWithParams(String sql, String[] replaces);
+    }
+    public static class Sqlite implements Sql{
         public Connection connection;
         public String sqlPath;
 
@@ -190,12 +208,13 @@ public class LocalDataBase {
         }
         /**
          * 删除一整行的数据
-         * @param tableName 表名
+         *
+         * @param tableName   表名
          * @param whereColumn 条件所在列
-         * @param whereValue 条件值
+         * @param whereValue  条件值
          * @return 是否成功删除
          */
-        public  Boolean deleteLine(String tableName,String whereColumn,String whereValue){
+        public boolean deleteLine(String tableName, String whereColumn, String whereValue){
             String query = "DELETE FROM " + tableName + " WHERE " + whereColumn + " = ?";
             try (PreparedStatement statement =  connection.prepareStatement(query)) {
                 statement.setString(1, whereValue);
@@ -281,6 +300,38 @@ public class LocalDataBase {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 return false;
+            }
+        }
+
+        /**
+         * 执行SQL语句
+         *
+         * @param sql      SQL语句
+         * @param replaces 替换参数
+         * @return 结果集
+         */
+        public ResultSet executeSQLWithParams(String sql, @Nullable String[] replaces) {
+            try {
+                PreparedStatement statement = connection.prepareStatement(sql);
+                if (replaces != null) {
+                    for (int i = 0; i < replaces.length; i++) {
+                        statement.setString(i + 1, replaces[i]); // PreparedStatement 的索引从 1 开始
+                    }
+                }
+
+                if (sql.trim().toLowerCase().startsWith("select")) {
+                    // 如果是查询操作，则返回 ResultSet 对象
+                    return statement.executeQuery();
+                } else {
+                    // 否则执行更新操作
+                    statement.executeUpdate();
+                    // 关闭 PreparedStatement，避免资源泄漏
+                    statement.close();
+                    return null;
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                return null;
             }
         }
         

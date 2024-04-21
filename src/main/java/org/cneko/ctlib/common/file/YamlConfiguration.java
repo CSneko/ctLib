@@ -1,5 +1,6 @@
 package org.cneko.ctlib.common.file;
 
+import com.google.gson.Gson;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
@@ -8,7 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-public class YamlConfiguration {
+public class YamlConfiguration implements Configure{
     private final Map<String, Object> data;
     private final Path path;
 
@@ -200,6 +201,36 @@ public class YamlConfiguration {
         }else {
             return false;
         }
+    }
+
+    @Override
+    public Config toConfig() {
+        return new Config(this);
+    }
+
+    /**
+     * 将 YAML 格式转换为 JSON 格式
+     * @param yamlContent YAML 格式的字符串
+     * @return JSON 格式的字符串，如果转换失败，则返回空字符串
+     */
+    public static JsonConfiguration toJson(String yamlContent) {
+        // 将 YAML 字符串解析为 Map
+        Yaml yaml = new Yaml();
+        Map<String, Object> yamlMap = yaml.load(yamlContent);
+        // 将 Map 转换为 JSON 字符串
+        Gson gson = new Gson();
+        return JsonConfiguration.of(gson.toJson(yamlMap));
+
+    }
+
+    public static YamlConfiguration fromFile(Path filePath) throws IOException{
+        return new YamlConfiguration(filePath);
+    }
+    public static YamlConfiguration fromFile(File file) throws IOException{
+        return new YamlConfiguration(file.toPath());
+    }
+    public static YamlConfiguration of(String jsonString) {
+        return new YamlConfiguration(jsonString);
     }
 
 }

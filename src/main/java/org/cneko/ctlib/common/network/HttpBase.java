@@ -11,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 
 public class HttpBase {
@@ -35,9 +35,10 @@ public class HttpBase {
             this.url = url;
             this.headers = headers;
             this.method = getMethod();
+            this.cookies = new ConcurrentHashMap<>();
         }
         public HttpBaseObject(@NotNull String url){
-            this(url, null);
+            this(url, new ConcurrentHashMap<>());
         }
 
         /**
@@ -66,25 +67,19 @@ public class HttpBase {
                 }
             }
 
-            int responseCode = conn.getResponseCode();
-            this.responseCode = responseCode;
+            // 获取响应内容
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String line;
 
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String line;
-
-                while ((line = in.readLine()) != null) {
-                    response.append(line);
-                }
-
-                in.close();
-                this.response = response.toString();
-            } else {
-                this.response = null;
+            while ((line = in.readLine()) != null) {
+                response.append(line);
             }
 
-            // Save response headers
+            in.close();
+            this.response = response.toString();
+
+            // 保存响应头
             Map<String, java.util.List<String>> map = conn.getHeaderFields();
             StringBuilder headers = new StringBuilder();
             for (Map.Entry<String, java.util.List<String>> entry : map.entrySet()) {
@@ -92,6 +87,7 @@ public class HttpBase {
             }
             this.responseHeaders = headers.toString();
         }
+
 
         /**
          * 设置url
