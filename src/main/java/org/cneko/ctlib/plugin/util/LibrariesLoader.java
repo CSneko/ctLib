@@ -2,6 +2,7 @@ package org.cneko.ctlib.plugin.util;
 
 import net.byteflux.libby.Library;
 import net.byteflux.libby.LibraryManager;
+import org.cneko.ctlib.common.network.PingTest;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,6 +13,14 @@ public class LibrariesLoader {
     public static void setManager(final LibraryManager manager){
         LibrariesLoader.manager = manager;
         LibrariesLoader.manager.addMavenCentral();
+        String netUrl = "http://mirrors.163.com/maven/repository/maven-public/";
+        if(PingTest.simplePing(netUrl) <= 500) {
+            addRepository(netUrl);
+        }
+    }
+
+    public static void addRepository(String url){
+        LibrariesLoader.manager.addRepository(url);
     }
 
     public static void load(String groupId,String artifactId,String version){
