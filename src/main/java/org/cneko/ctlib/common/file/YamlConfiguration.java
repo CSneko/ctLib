@@ -203,10 +203,6 @@ public class YamlConfiguration implements Configure{
         }
     }
 
-    @Override
-    public Config toConfig() {
-        return new Config(this);
-    }
 
     /**
      * 将 YAML 格式转换为 JSON 格式

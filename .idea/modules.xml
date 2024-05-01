@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ctLibFabric.iml" filepath="$PROJECT_DIR$/.idea/modules/ctLibFabric.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ctLibFabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ctLibFabric.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mods.ctLibFabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/mods.ctLibFabric.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.cneko.ctLibFabric.test.iml" filepath="$PROJECT_DIR$/.idea/modules/org.cneko.ctLibFabric.test.iml" />
     </modules>
   </component>

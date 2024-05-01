@@ -122,8 +122,4 @@ public class PropertiesConfigure implements Configure {
         return equals(obj); // Properties 文件没有忽略大小写的概念
     }
 
-    @Override
-    public Config toConfig() {
-        return new Config(this);
-    }
 }

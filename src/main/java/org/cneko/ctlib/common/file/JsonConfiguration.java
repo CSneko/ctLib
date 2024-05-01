@@ -302,10 +302,7 @@ public class JsonConfiguration implements Configure{
         }
     }
 
-    @Override
-    public Config toConfig() {
-        return new Config(this);
-    }
+
 
     /**
      * 尝试将json 转换为yaml

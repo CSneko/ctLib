@@ -43,5 +43,4 @@ public interface Configure {
 
     boolean equalsCaseIgnoreCase(Object obj);
 
-    Config toConfig();
 }

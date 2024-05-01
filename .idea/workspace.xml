@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="添加getId方法">
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="添加更多config类，修复一些Bug">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +42,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -66,14 +69,12 @@
     &quot;assignee&quot;: &quot;CSneko&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="cfb27dc8-51f2-42cc-a1a3-59775004f898" />
-        <option name="url" value="https://github.com/CSneko/ctLib.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/CSneko/ctLib.git&quot;,
+    &quot;accountId&quot;: &quot;2ed95e2a-c14a-417d-835b-4eee59706e09&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -236,14 +237,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-bfa3237e" />
-        <option value="jdk-17.0.9-corretto-17.0.9-f644763e9732-220112af" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -381,8 +374,31 @@
       <option name="project" value="LOCAL" />
       <updated>1712975580549</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="添加更多config类，修复一些Bug">
+      <option name="closed" value="true" />
+      <created>1713669222276</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1713669222276</updated>
+    </task>
+    <task id="LOCAL-00018" summary="添加更多config类，修复一些Bug">
+      <option name="closed" value="true" />
+      <created>1713670473189</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1713670473189</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
+    <option featureType="dependencySupport" implementationName="java:com.velocitypowered:velocity-api" />
+    <option featureType="dependencySupport" implementationName="java:net.kyori:adventure-api" />
+    <option featureType="dependencySupport" implementationName="java:org.spigotmc:spigot-api" />
+    <option featureType="dependencySupport" implementationName="java:net.fabricmc:fabric-loader" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -412,6 +428,8 @@
     <MESSAGE value="修改ModMeta类" />
     <MESSAGE value="添加StringUtil类" />
     <MESSAGE value="添加getId方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加getId方法" />
+    <MESSAGE value="添加更多config方法，修复一些Bug" />
+    <MESSAGE value="添加更多config类，修复一些Bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加更多config类，修复一些Bug" />
   </component>
 </project>
