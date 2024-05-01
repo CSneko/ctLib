@@ -3,6 +3,7 @@ package org.cneko.ctlib.common.file;
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
@@ -64,10 +65,21 @@ public class Resources {
             while ((jarEntry = jarInputStream.getNextJarEntry()) != null) {
                 String entryPath = jarEntry.getName();
                 if (entryPath.startsWith(resourcePath + "/")) {
-                    File targetDir = new File(targetPath, entryPath.substring(resourcePath.length() + 1));
-                    targetDir.mkdirs(); // Create all necessary directories
-                    if (!jarEntry.isDirectory()) { // If it's a file within the directory
-                        try (FileOutputStream fileOutputStream = new FileOutputStream(targetDir)) {
+                    String relativePath = entryPath.substring(resourcePath.length() + 1);
+                    File targetFile = new File(targetPath, relativePath);
+
+                    // Ensure target directory exists
+                    File targetDir = targetFile.getParentFile();
+                    if (targetDir != null && !targetDir.exists()) {
+                        targetDir.mkdirs(); // Create all necessary directories
+                    }
+
+                    if (jarEntry.isDirectory()) {
+                        // Create empty directory if it's a directory in JAR
+                        targetFile.mkdirs();
+                    } else {
+                        // Copy file content
+                        try (FileOutputStream fileOutputStream = new FileOutputStream(targetFile)) {
                             byte[] buffer = new byte[4096];
                             int bytesRead;
                             while ((bytesRead = jarInputStream.read(buffer)) != -1) {
@@ -79,6 +91,7 @@ public class Resources {
             }
         }
     }
+
 
     /**
      * 从jar包中读取文件
@@ -121,24 +134,68 @@ public class Resources {
 
         MemoryFileSystem memoryFileSystem = new MemoryFileSystem();
 
-        try (JarInputStream jarInputStream = new JarInputStream(new FileInputStream(this.file))) {
-            JarEntry jarEntry;
-            while ((jarEntry = jarInputStream.getNextJarEntry()) != null) {
-                String entryPath = jarEntry.getName();
-                if (entryPath.startsWith(resourcePath + "/")) {
-                    String relativePath = entryPath.substring(resourcePath.length() + 1);
-
-                    if (!jarEntry.isDirectory()) { // If it's a file
-                        byte[] buffer = new byte[4096];
-                        int bytesRead;
-                        while ((bytesRead = jarInputStream.read(buffer)) != -1) {
-                            memoryFileSystem.writeFile(relativePath, jarInputStream, buffer, bytesRead);
-                        }
-                    }
-                }
+        // Create a temporary directory to extract directory structure (can be replaced with in-memory approach)
+        String tempDirPrefix = "memory-fs-";
+        File tempDir = null;
+        while (tempDir == null) { // Retry until successful creation
+            try {
+                tempDir = File.createTempFile(tempDirPrefix, null);
+            } catch (IOException e) {
+                // Handle potential exception during temporary file creation (e.g., retry logic)
+                System.err.println("Failed to create temporary file: " + e.getMessage());
             }
+        }
+
+        tempDir.delete(); // Convert temporary file to directory
+        tempDir.mkdirs();
+
+        try {
+            // Extract directory structure to temporary directory
+            copyDirectoryFromJar(resourcePath, tempDir.getAbsolutePath());
+            this.tempDir = tempDir;
+            // Build MemoryFileSystem from extracted structure (alternative approach possible)
+            buildMemoryFileSystemFromDir(tempDir, memoryFileSystem);
+        } finally {
+            // Clean up temporary directory (if using temporary directory approach)
+            deleteDirectory(tempDir);
         }
 
         return memoryFileSystem;
     }
+    private File tempDir;
+    private void buildMemoryFileSystemFromDir(File dir, MemoryFileSystem memoryFileSystem) throws IOException {
+        for (File file : dir.listFiles()) {
+            String name = file.getName();
+            if(file.isDirectory()){
+                buildMemoryFileSystemFromDir(file,memoryFileSystem);
+            }else {
+                name = file.getPath();
+                name = name.replace(tempDir.getAbsolutePath(), "");
+                name = name.substring(1);
+                memoryFileSystem.addFile(name, Files.readAllBytes(file.toPath()));
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+    private void deleteDirectory(File directory) throws IOException {
+        if (directory.isDirectory()) {
+            for (File file : directory.listFiles()) {
+                deleteDirectory(file);
+            }
+        }
+        if (!directory.delete()) {
+            throw new IOException("Failed to delete directory: " + directory);
+        }
+    }
+
+
+
+
 }

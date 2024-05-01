@@ -54,12 +54,10 @@ public class JsonConfiguration implements Configure{
     }
 
     public String getString(String key) {
-        Object value = get(key);
-        if (value instanceof String) {
-            return (String) value;
-        } else if (value instanceof Map || value instanceof List) {
-            return new Gson().toJson(value);
-        } else {
+        try {
+            Object value = get(key);
+            return value instanceof String ? (String) value : null;
+        }catch (Exception e){
             return null;
         }
     }
@@ -110,23 +108,27 @@ public class JsonConfiguration implements Configure{
     }
 
     public Object get(String key) {
-        // 首先尝试直接读取键值
-        Object value = getValue(configData, key);
-        if (value != null) {
-            return value;
-        }
-
-        // 如果直接读取失败，则尝试读取位于父键值的子键值
-        String parentKey = getParentKey(key);
-        if (parentKey != null) {
-            Object parentValue = getValue(configData, parentKey);
-            if (parentValue instanceof Map) {
-                return getValue(parentValue, getLastKey(key));
+        try {
+            // 首先尝试直接读取键值
+            Object value = getValue(configData, key);
+            if (value != null) {
+                return value;
             }
-        }
 
-        // 如果找不到父键值，则直接返回null
-        return null;
+            // 如果直接读取失败，则尝试读取位于父键值的子键值
+            /*String parentKey = getParentKey(key);
+            if (parentKey != null) {
+                Object parentValue = getValue(configData, parentKey);
+                if (parentValue instanceof Map) {
+                    return getValue(parentValue, getLastKey(key));
+                }
+            }**/
+
+            // 如果找不到父键值，则直接返回null
+            return null;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     // 获取键值

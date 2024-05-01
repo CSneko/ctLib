@@ -11,7 +11,7 @@ public class AssetsFile {
         this.files = memoryFileSystem;
     }
     public AssetsFile(Resources resources,String modID) throws IOException {
-        this.files = resources.readDirectoryFromJar("assets/"+modID+"/");
+        this.files = resources.readDirectoryFromJar("assets/"+modID);
     }
     public LanguageAssets getLanguageAssets() throws IOException {
         return new LanguageAssets(files.readDirectory("lang/"));
@@ -30,20 +30,29 @@ public class AssetsFile {
             this.defaultLanguage = lang;
         }
         public String get(@NotNull String key,@NotNull String lang){
-            String file = Arrays.toString(files.readFile(lang+".json"));
-            JsonConfiguration json = JsonConfiguration.of(file);
-            String value = json.getString(key);
-            if(value == null && !lang.equals("en_us")){
-                // 如果值为null,则返回英语
-                String EnglishFile = Arrays.toString(files.readFile("en_us.json"));
-                JsonConfiguration EnglishJson = JsonConfiguration.of(EnglishFile);
-                value = EnglishJson.getString(key);
+            try {
+                String file = null;
+                try {
+                    file = files.readFile(lang + ".json", null);
+                } catch (IOException e) {
+                    return key;
+                }
+                JsonConfiguration json = JsonConfiguration.of(file);
+                String value = json.getString(key);
+                if (value == null && !lang.equals("en_us")) {
+                    // 如果值为null,则返回英语
+                    String EnglishFile = files.readFile("en_us.json", null);
+                    JsonConfiguration EnglishJson = JsonConfiguration.of(EnglishFile);
+                    value = EnglishJson.getString(key);
+                }
+                if (value == null) {
+                    // 如果值为null,则返回key
+                    value = key;
+                }
+                return value;
+            }catch (Exception e){
+                return key;
             }
-            if(value == null){
-                // 如果值为null,则返回key
-                value = key;
-            }
-            return value;
         }
         public String get(@NotNull String key){
             return get(key,defaultLanguage);
