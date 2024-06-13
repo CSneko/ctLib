@@ -88,7 +88,7 @@ shadowJar {
 
 dependencies {
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
+    implementation 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
     //implementation 'javax.servlet:javax.servlet-api:3.1.0'
     //implementation 'org.eclipse.jetty:jetty-server:9.4.46.v20220331'
     implementation 'mysql:mysql-connector-java:8.0.28'
@@ -96,7 +96,7 @@ dependencies {
     //implementation 'javax.activation:activation:1.1.1'
     //implementation 'commons-codec:commons-codec:1.15'
     implementation 'org.xerial:sqlite-jdbc:3.41.2.2'
-    compileOnly "com.velocitypowered:velocity-api:3.2.0-SNAPSHOT"
+    implementation "com.velocitypowered:velocity-api:3.2.0-SNAPSHOT"
     annotationProcessor "com.velocitypowered:velocity-api:3.2.0-SNAPSHOT"
     //implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0-rc1'
     //implementation "com.fasterxml.jackson.core:jackson-core:2.12.5"
