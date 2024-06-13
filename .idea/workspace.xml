@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="添加更多config类，修复一些Bug">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" afterDir="false" />
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="更新Assets读取类">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -103,15 +106,18 @@
     &quot;Gradle.ctLibFabric build.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ctLib[BFV].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ctLib[Fabric].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.构建 ctLibFabric.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/crystalneko/BA106C158B1B58EF/libs/jdk&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/crystalneko/BA106C158B1B58EF/libs/gradle/gradle-8.7&quot;,
     &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.6310345&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;应用程序.Minecraft Client.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.Minecraft Server.executor&quot;: &quot;Run&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -224,12 +230,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Gradle.ctLibFabric build" />
-      <item itemvalue="Gradle.ctLib[Fabric]" />
-      <item itemvalue="Gradle.ctLib[BFV]" />
       <item itemvalue="Gradle.ctLibFabric [dependencies]" />
-      <item itemvalue="应用程序.Minecraft Client" />
+      <item itemvalue="Gradle.ctLibFabric build" />
+      <item itemvalue="Gradle.ctLib[BFV]" />
+      <item itemvalue="Gradle.ctLib[Fabric]" />
       <item itemvalue="应用程序.Minecraft Server" />
+      <item itemvalue="应用程序.Minecraft Client" />
     </list>
     <recent_temporary>
       <list>
@@ -390,7 +396,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713670473189</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="更新Assets读取类">
+      <option name="closed" value="true" />
+      <created>1714556529054</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1714556529054</updated>
+    </task>
+    <task id="LOCAL-00020" summary="更新Assets读取类">
+      <option name="closed" value="true" />
+      <created>1714566135187</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1714566135187</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -430,6 +452,7 @@
     <MESSAGE value="添加getId方法" />
     <MESSAGE value="添加更多config方法，修复一些Bug" />
     <MESSAGE value="添加更多config类，修复一些Bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加更多config类，修复一些Bug" />
+    <MESSAGE value="更新Assets读取类" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新Assets读取类" />
   </component>
 </project>

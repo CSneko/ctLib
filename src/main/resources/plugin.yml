@@ -1,6 +1,6 @@
 name: ctLib
-version: '0.1.7'
+version: '${version}'
 author: CrystalNeko
 main: org.cneko.ctlib.bootstrap.BukkitBootstrap
-api-version: '1.16'
+api-version: '1.12'
 folia-supported: true

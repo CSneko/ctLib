@@ -275,8 +275,25 @@ public class JsonConfiguration implements Configure{
     }
 
     public void set(String key, Object value) {
+    if (value instanceof List) {
+        // 特殊处理List<JsonConfigure>
+        List<?> list = (List<?>) value;
+        if (!list.isEmpty() && list.get(0) instanceof JsonConfiguration) {
+            List<String> jsonStringList = new ArrayList<>();
+            for (Object item : list) {
+                jsonStringList.add(gson.toJson(item));
+            }
+            configData.put(key, jsonStringList);
+        } else {
+            // 其他类型的List直接处理
+            configData.put(key, value);
+        }
+    } else {
+        // 非List类型直接处理
         configData.put(key, value);
     }
+}
+
 
     public void save() throws IOException {
         try (FileWriter writer = new FileWriter(filePath.toFile())) {

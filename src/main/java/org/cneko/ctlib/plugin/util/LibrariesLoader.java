@@ -2,8 +2,13 @@ package org.cneko.ctlib.plugin.util;
 
 import net.byteflux.libby.Library;
 import net.byteflux.libby.LibraryManager;
+import net.byteflux.libby.classloader.URLClassLoaderHelper;
+import net.byteflux.libby.logging.adapters.JDKLogAdapter;
+import org.cneko.ctlib.Meta;
 import org.cneko.ctlib.common.network.PingTest;
 
+import java.net.URLClassLoader;
+import java.nio.file.Path;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,13 +19,22 @@ public class LibrariesLoader {
         LibrariesLoader.manager = manager;
         LibrariesLoader.manager.addMavenCentral();
         String netUrl = "http://mirrors.163.com/maven/repository/maven-public/";
-        if(PingTest.simplePing(netUrl) <= 500) {
+        if(PingTest.simplePing(netUrl) <= 300) {
             addRepository(netUrl);
         }
     }
 
     public static void addRepository(String url){
         LibrariesLoader.manager.addRepository(url);
+    }
+
+    public static void load(String groupId,String artifactId,String version,String tryClass){
+        try{
+            Class.forName(tryClass);
+        }catch (ClassNotFoundException e){
+            // 没有这个类，加载
+            load(groupId,artifactId,version);
+        }
     }
 
     public static void load(String groupId,String artifactId,String version){
@@ -42,5 +56,22 @@ public class LibrariesLoader {
                 .build();
 
         manager.loadLibrary(library);
+    }
+
+
+    public static class Manger extends LibraryManager {
+        private static String DATA_FOLDER = "sparkle";
+        private static String DIR = "lib";
+
+        private final URLClassLoaderHelper classLoader;
+        public Manger() {
+            super(new JDKLogAdapter(Meta.INSTANCE.getDefaultLogger()),Path.of(DATA_FOLDER),DIR );
+            this.classLoader = new URLClassLoaderHelper((URLClassLoader)Meta.INSTANCE.getClass().getClassLoader(), this);
+        }
+
+        @Override
+        protected void addToClasspath(Path file) {
+            this.classLoader.addToClasspath(file);
+        }
     }
 }
