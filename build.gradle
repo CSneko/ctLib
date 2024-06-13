@@ -53,8 +53,6 @@ repositories {
 
 
 
-
-
 shadowJar {
     if (loader == "Fabric"){
         archiveFileName = "ctLibMod-${version}.jar"
@@ -64,28 +62,22 @@ shadowJar {
 
 
     dependencies {
+        if(loader == "All"){
+            // 打包所有依赖
+        }
         if (loader == "Fabric") {
             //include(dependency("commons-codec:commons-codec:1.15"))
             include(dependency("org.xerial:sqlite-jdbc:3.41.2.2"))
             include(dependency(name: 'snakeyaml-2.2'))
         }
-        include(dependency("net.byteflux:libby-velocity:1.3.0"))
-        include(dependency("net.byteflux:libby-core:1.3.0"))
-        include(dependency("net.byteflux:libby-bukkit:1.3.0"))
-        include(dependency("net.byteflux:libby-paper:1.3.0"))
-        include(dependency("net.byteflux:libby-slf4j:1.1.5"))
-        include(dependency("net.byteflux:libby-nukkit:1.3.0"))
-        //include(dependency("javax.servlet:javax.servlet-api:3.1.0"))
-        //include(dependency("org.eclipse.jetty:jetty-server:9.4.46.v20220331"))
-        //include(dependency("mysql:mysql-connector-java:8.0.26"))
-        //include(dependency("com.sun.mail:javax.mail:1.6.2"))
-        //include(dependency("javax.activation:activation:1.1.1"))
-        //include(dependency("commons-codec:commons-codec:1.15"))
-        //include(dependency("org.xerial:sqlite-jdbc:3.34.0"))
-        //include(dependency("com.fasterxml.jackson.core:jackson-databind:2.12.5"))
-        //include(dependency("com.fasterxml.jackson.core:jackson-core:2.12.5"))
-        //include(dependency("com.fasterxml.jackson.core:jackson-annotations:2.12.5"))
-
+        if(loader == "Fabric" || loader == "Bukkit") {
+            include(dependency("net.byteflux:libby-velocity:1.3.0"))
+            include(dependency("net.byteflux:libby-core:1.3.0"))
+            include(dependency("net.byteflux:libby-bukkit:1.3.0"))
+            include(dependency("net.byteflux:libby-paper:1.3.0"))
+            include(dependency("net.byteflux:libby-slf4j:1.1.5"))
+            include(dependency("net.byteflux:libby-nukkit:1.3.0"))
+        }
 
 
     }
