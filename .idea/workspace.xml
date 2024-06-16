@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="呜呜呜，我居然没发现模组版本不能运行●﹏●">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" afterDir="false" />
-    </list>
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="喵呜？这又是什么问题(￣□￣)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -447,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718548002081</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="喵呜？这又是什么问题(￣□￣)">
+      <option name="closed" value="true" />
+      <created>1718548225690</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1718548225690</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -491,6 +497,7 @@
     <MESSAGE value="修复JsonConfiguration反序列化失败" />
     <MESSAGE value="修改构建脚本" />
     <MESSAGE value="呜呜呜，我居然没发现模组版本不能运行●﹏●" />
-    <option name="LAST_COMMIT_MESSAGE" value="呜呜呜，我居然没发现模组版本不能运行●﹏●" />
+    <MESSAGE value="喵呜？这又是什么问题(￣□￣)" />
+    <option name="LAST_COMMIT_MESSAGE" value="喵呜？这又是什么问题(￣□￣)" />
   </component>
 </project>
