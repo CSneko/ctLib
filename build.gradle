@@ -55,11 +55,11 @@ repositories {
 
 shadowJar {
     if (loader == "Fabric"){
-        archiveFileName = "ctLibMod-${version}.jar"
+        archiveFileName = "ctLibMod.jar"
     }else if (loader == "Bukkit"){
-        archiveFileName = "ctLibPlugin-${version}.jar"
+        archiveFileName = "ctLibPlugin.jar"
     }else {
-        archiveFileName = "ctLib-${version}.jar"
+        archiveFileName = "ctLib.jar"
     }
 
 
