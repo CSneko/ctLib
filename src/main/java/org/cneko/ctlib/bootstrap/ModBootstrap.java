@@ -1,8 +1,7 @@
 package org.cneko.ctlib.bootstrap;
 
-import net.byteflux.libby.LibraryManager;
 import org.cneko.ctlib.Meta;
-import org.cneko.ctlib.plugin.util.LibrariesLoader;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.logging.Level;
@@ -20,8 +19,8 @@ public class ModBootstrap {
         }
 
         // 设置LibraryManger
-        LibraryManager libraryManager;
+        /*LibraryManager libraryManager;
         libraryManager = new LibrariesLoader.Manger();
-        LibrariesLoader.setManager(libraryManager);
+        LibrariesLoader.setManager(libraryManager);*/
     }
 }

@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="更新Assets读取类">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="修改构建脚本">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/releases.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/ctLibFabric.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/mods.ctLibFabric.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/mods.ctLibFabric.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/ModBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/ModBootstrap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,10 +235,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Gradle.ctLibFabric [dependencies]" />
       <item itemvalue="Gradle.ctLibFabric build" />
       <item itemvalue="Gradle.ctLib[BFV]" />
       <item itemvalue="Gradle.ctLib[Fabric]" />
+      <item itemvalue="Gradle.ctLibFabric [dependencies]" />
       <item itemvalue="应用程序.Minecraft Server" />
       <item itemvalue="应用程序.Minecraft Client" />
     </list>
@@ -412,7 +417,31 @@
       <option name="project" value="LOCAL" />
       <updated>1714566135187</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="修复JsonConfiguration反序列化失败">
+      <option name="closed" value="true" />
+      <created>1718267566580</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1718267566581</updated>
+    </task>
+    <task id="LOCAL-00022" summary="修改构建脚本">
+      <option name="closed" value="true" />
+      <created>1718268250922</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1718268250922</updated>
+    </task>
+    <task id="LOCAL-00023" summary="修改构建脚本">
+      <option name="closed" value="true" />
+      <created>1718268480776</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1718268480776</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -453,6 +482,8 @@
     <MESSAGE value="添加更多config方法，修复一些Bug" />
     <MESSAGE value="添加更多config类，修复一些Bug" />
     <MESSAGE value="更新Assets读取类" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新Assets读取类" />
+    <MESSAGE value="修复JsonConfiguration反序列化失败" />
+    <MESSAGE value="修改构建脚本" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改构建脚本" />
   </component>
 </project>

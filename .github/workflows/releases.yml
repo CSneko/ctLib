@@ -1,0 +1,39 @@
+name: Publish Release Artifacts
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+
+      - name: Build with Modding depends
+        run: ./gradlew shadowJar -Ploader="Fabric"
+
+      - name: Build with Plugin depends
+        run: ./gradlew shadowJar -Ploader="Bukkit"
+
+      - name: Upload Release Assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }} # 这里自动获取到新Release的上传URL
+          asset_path: build/libs/*.jar # 上传所有JAR文件
+          asset_name: ${{ github.event.release.tag_name }}-*.jar # 文件命名可以包含标签名，*会被实际文件名替换
+          asset_content_type: application/java-archive # 根据文件类型设置正确的Content-Type
+
