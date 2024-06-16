@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="喵呜？这又是什么问题(￣□￣)" />
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="诶诶诶，这还有问题吗(｢・ω・)｢" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -453,7 +453,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718548225690</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="诶诶诶，这还有问题吗(｢・ω・)｢">
+      <option name="closed" value="true" />
+      <created>1718548766559</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1718548766559</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -498,6 +506,7 @@
     <MESSAGE value="修改构建脚本" />
     <MESSAGE value="呜呜呜，我居然没发现模组版本不能运行●﹏●" />
     <MESSAGE value="喵呜？这又是什么问题(￣□￣)" />
-    <option name="LAST_COMMIT_MESSAGE" value="喵呜？这又是什么问题(￣□￣)" />
+    <MESSAGE value="诶诶诶，这还有问题吗(｢・ω・)｢" />
+    <option name="LAST_COMMIT_MESSAGE" value="诶诶诶，这还有问题吗(｢・ω・)｢" />
   </component>
 </project>
