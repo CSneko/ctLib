@@ -275,19 +275,29 @@ public class JsonConfiguration implements Configure{
     }
 
     public void set(String key, Object value) {
-    if (value instanceof List) {
-        // 特殊处理List<JsonConfigure>
-        List<?> list = (List<?>) value;
-        if (!list.isEmpty() && list.get(0) instanceof JsonConfiguration) {
-            List<String> jsonStringList = new ArrayList<>();
-            for (Object item : list) {
-                jsonStringList.add(gson.toJson(item));
-            }
-            configData.put(key, jsonStringList);
-        } else {
-            // 其他类型的List直接处理
-            configData.put(key, value);
+    if(value instanceof JsonConfiguration) {
+        configData.put(key, ((JsonConfiguration) value).toGson());
+    }else if (value instanceof List) {
+        JsonArray jsonArray = new JsonArray();
+        // List类型处理
+        List<Object> list = (List<Object>) value;
+        // 如果List为空，则设置为空数组
+        if(list.isEmpty()) {configData.put(key, jsonArray); return;}
+        // 如果List为JsonConfiguration对象
+        if (list.get(0) instanceof JsonConfiguration){
+            // 将List中的JsonConfiguration对象转换为JsonObject
+            list.forEach(obj -> {
+                if (obj instanceof JsonConfiguration) {
+                    jsonArray.add(((JsonConfiguration) obj).toGson());
+                }
+            });
+        }else {
+            // 其它list类型处理
+            list.forEach(obj -> {
+                configData.put(key, obj);
+            });
         }
+        configData.put(key, jsonArray);
     } else {
         // 非List类型直接处理
         configData.put(key, value);
@@ -338,6 +348,28 @@ public class JsonConfiguration implements Configure{
 
         // 将 Map 转换为 YAML 格式的字符串
         return YamlConfiguration.of(yaml.dump(map));
+    }
+
+    public JsonObject toGson() {
+        JsonObject jsonObject = new JsonObject();
+        for (Map.Entry<String, Object> entry : configData.entrySet()) {
+            Object value = entry.getValue();
+            if (value instanceof String || value instanceof Number || value instanceof Boolean) {
+                jsonObject.addProperty(entry.getKey(),value.toString());
+            } else if (value instanceof JsonConfiguration) {
+                jsonObject.add(entry.getKey(), ((JsonConfiguration) value).toGson());
+            } else if (value instanceof List) {
+                JsonArray jsonArray = new JsonArray();
+                for (Object item : (List<?>) value) {
+                    if (item instanceof JsonConfiguration) {
+                        jsonArray.add(((JsonConfiguration) item).toGson());
+                    }
+                }
+                jsonObject.add(entry.getKey(), jsonArray);
+            }
+
+        }
+        return jsonObject;
     }
 
     public static JsonConfiguration fromFile(Path filePath) throws IOException{

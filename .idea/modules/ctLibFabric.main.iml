@@ -15,7 +15,6 @@
           <platformType>VELOCITY</platformType>
           <platformType>MIXIN</platformType>
           <platformType>NEOFORGE</platformType>
-          <platformType>MCP</platformType>
           <platformType>ADVENTURE</platformType>
         </autoDetectTypes>
         <projectReimportVersion>1</projectReimportVersion>
