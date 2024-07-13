@@ -1,7 +1,6 @@
 package org.cneko.ctlib.common.file;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface Configure {
@@ -13,8 +12,6 @@ public interface Configure {
 
     String getString(String path);
 
-    List<String> getStringList(String path);
-
     float getFloat(String path);
 
     double getDouble(String path);
@@ -25,17 +22,21 @@ public interface Configure {
 
     boolean getBoolean(String path, boolean defValue);
 
-    boolean isSet(String path);
-
     boolean contains(String path);
 
-    ArrayList<Integer> getIntList(String path);
+    default boolean isSet(String path){
+        return contains(path);
+    }
 
-    ArrayList<Double> getDoubleList(String path);
+    List<String> getStringList(String path);
 
-    ArrayList<Float> getFloatList(String path);
+    List<Integer> getIntList(String path);
 
-    ArrayList<Object> getList(String path);
+    List<Double> getDoubleList(String path);
+
+    List<Float> getFloatList(String path);
+
+    List<Object> getList(String path);
 
     String toString();
 

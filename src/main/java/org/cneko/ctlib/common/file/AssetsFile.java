@@ -3,7 +3,6 @@ package org.cneko.ctlib.common.file;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 public class AssetsFile {
     private MemoryFileSystem files;

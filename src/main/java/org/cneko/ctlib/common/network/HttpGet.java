@@ -1,15 +1,12 @@
 package org.cneko.ctlib.common.network;
 
 import org.cneko.ctlib.common.file.JsonConfiguration;
-import org.cneko.ctlib.common.file.YamlConfiguration;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Map;
 
 public class HttpGet {
