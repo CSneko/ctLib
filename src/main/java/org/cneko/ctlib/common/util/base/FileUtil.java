@@ -1,18 +1,16 @@
 package org.cneko.ctlib.common.util.base;
 
 import com.google.gson.Gson;
-import org.cneko.ctlib.Meta;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.error.YAMLException;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.logging.Level;
 
 public class FileUtil {
     /**
@@ -33,20 +31,27 @@ public class FileUtil {
      * @param path 文件路径
      * @return 文件内容
      */
-    public static String readFileWithException(String path) throws IOException {
-        return new String(Files.readAllBytes(Paths.get(path)));
+    public static String readFileWithException(String path) {
+        try {
+            byte[] bytes = Files.readAllBytes(Paths.get(path));
+            return new String(bytes, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+            return ""; // 返回空字符串
+        }
     }
 
     /**
      * 写入文件并覆盖
-     * @param string 文件内容
+     * @param content 文件内容
      * @param path 文件路径
      */
-    public static void overwriteFile(Path path,String string) {
-        try (FileWriter writer = new FileWriter(path.toFile())) {
-            string.toString();
+    public static void overwriteFile(Path path,String content) {
+        try {
+            Files.write(path, content.getBytes());
         } catch (IOException e) {
-            Meta.INSTANCE.getDefaultLogger().log(Level.SEVERE,"Error when write file: ", e);
+            System.err.println("Failed to write to file: " + path);
+            e.printStackTrace();
         }
     }
 

@@ -21,12 +21,10 @@ public class JsonConfiguration implements Configure{
      */
     public JsonConfiguration(String jsonString){
         this.original = jsonString;
-        // 创建JsonParser对象
-        JsonParser jsonParser = new JsonParser();
-        // 解析JSON字符串为JsonElement
-        JsonElement jsonElement = jsonParser.parse(jsonString);
-        // 强制转换JsonElement为JsonObject
-        this.jsonObject = jsonElement.getAsJsonObject();
+        // 创建 Gson 对象
+        Gson gson = new Gson();
+        // 将 JSON 字符串转换为 JsonObject
+        this.jsonObject = gson.fromJson(jsonString, JsonObject.class);
     }
 
     /**
@@ -50,7 +48,6 @@ public class JsonConfiguration implements Configure{
     /**
      * 将文件转换为JsonConfiguration
      * @param filePath 文件路径
-     * @throws IOException 读取文件失败
      */
     public JsonConfiguration(Path filePath) throws IOException {
         this(FileUtil.readFileWithException(filePath.toString()));
@@ -487,6 +484,11 @@ public class JsonConfiguration implements Configure{
             return map;
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return jsonObject.toString();
     }
 
     public static JsonConfiguration of(String jsonString) {

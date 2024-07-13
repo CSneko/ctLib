@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="删除com.crystalneko,修改json类">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/JsonConfigurationLegacy.java" afterDir="false" />
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="重构JsonConfiguration">
+      <change afterPath="$PROJECT_DIR$/ctlib/test.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/AssetsFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/AssetsFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/Configure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/Configure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/JsonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/JsonConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/network/HttpGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/network/HttpGet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/base/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/base/FileUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,6 +107,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.ctLibFabric [:ModBootstrap.main()].executor": "Run",
     "Gradle.ctLibFabric [:StringUtil.main()].executor": "Run",
     "Gradle.ctLibFabric [generateTemplates].executor": "Run",
     "Gradle.ctLibFabric build.executor": "Run",
@@ -148,6 +145,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.ctLib[Fabric]">
+    <configuration name="ModBootstrap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.cneko.ctlib.bootstrap.ModBootstrap" />
+      <module name="ctLibFabric.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.cneko.ctlib.bootstrap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ctLibFabric [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -248,9 +258,11 @@
       <item itemvalue="Gradle.ctLibFabric [dependencies]" />
       <item itemvalue="应用程序.Minecraft Server" />
       <item itemvalue="应用程序.Minecraft Client" />
+      <item itemvalue="应用程序.ModBootstrap" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.ModBootstrap" />
         <item itemvalue="Gradle.ctLibFabric [dependencies]" />
       </list>
     </recent_temporary>
@@ -512,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720071872283</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="重构JsonConfiguration">
+      <option name="closed" value="true" />
+      <created>1720855062522</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1720855062522</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -535,7 +555,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="0.0.13更新" />
     <MESSAGE value="修复json无法运行的问题" />
     <MESSAGE value="添加异步get方法，修改文件管理" />
     <MESSAGE value="重构代码" />
@@ -560,6 +579,7 @@
     <MESSAGE value=" 算了吧，不弄这个了(┙&gt;∧&lt;)┙へ┻┻)" />
     <MESSAGE value=" 我怎么又忘记了呀(。・_・。)" />
     <MESSAGE value="删除com.crystalneko,修改json类" />
-    <option name="LAST_COMMIT_MESSAGE" value="删除com.crystalneko,修改json类" />
+    <MESSAGE value="重构JsonConfiguration" />
+    <option name="LAST_COMMIT_MESSAGE" value="重构JsonConfiguration" />
   </component>
 </project>
