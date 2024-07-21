@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="重构JsonConfiguration">
-      <change afterPath="$PROJECT_DIR$/ctlib/test.json" afterDir="false" />
+    <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="添加构建脚本">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/JsonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/file/JsonConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/base/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/common/util/base/FileUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,31 +100,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.ctLibFabric [:ModBootstrap.main()].executor": "Run",
-    "Gradle.ctLibFabric [:StringUtil.main()].executor": "Run",
-    "Gradle.ctLibFabric [generateTemplates].executor": "Run",
-    "Gradle.ctLibFabric build.executor": "Run",
-    "Gradle.ctLib[BFV].executor": "Run",
-    "Gradle.ctLib[Fabric].executor": "Run",
-    "Gradle.构建 ctLibFabric.executor": "Run",
-    "OverrideImplement.generate.javadoc": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/media/crystalneko/BA106C158B1B58EF/libs/gradle/gradle-8.7",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.6310345",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "应用程序.Minecraft Client.executor": "Run",
-    "应用程序.Minecraft Server.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.ctLibFabric [:ModBootstrap.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ctLibFabric [:StringUtil.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ctLibFabric [generateTemplates].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ctLibFabric build.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ctLib[BFV].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ctLib[Fabric].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.构建 ctLibFabric.executor&quot;: &quot;Run&quot;,
+    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/crystalneko/BA106C158B1B58EF/libs/gradle/gradle-8.7&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.6310345&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;应用程序.Minecraft Client.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.Minecraft Server.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main" />
@@ -532,7 +529,23 @@
       <option name="project" value="LOCAL" />
       <updated>1720855062522</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="重构JsonConfiguration">
+      <option name="closed" value="true" />
+      <created>1720868063013</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1720868063013</updated>
+    </task>
+    <task id="LOCAL-00034" summary="添加构建脚本">
+      <option name="closed" value="true" />
+      <created>1720940306727</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1720940306727</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -555,7 +568,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="修复json无法运行的问题" />
     <MESSAGE value="添加异步get方法，修改文件管理" />
     <MESSAGE value="重构代码" />
     <MESSAGE value="支持NukkitX" />
@@ -580,6 +592,7 @@
     <MESSAGE value=" 我怎么又忘记了呀(。・_・。)" />
     <MESSAGE value="删除com.crystalneko,修改json类" />
     <MESSAGE value="重构JsonConfiguration" />
-    <option name="LAST_COMMIT_MESSAGE" value="重构JsonConfiguration" />
+    <MESSAGE value="添加构建脚本" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加构建脚本" />
   </component>
 </project>
