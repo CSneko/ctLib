@@ -1,0 +1,15 @@
+modLoader="javafml" #mandatory
+loaderVersion="*" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="GPL-V3"
+[[mods]] #mandatory
+# The modid of the mod
+modId="ctlib" #mandatory
+# The version number of the mod
+version="0.1.13" #mandatory
+# A display name for the mod
+displayName="ctLib" #mandatory
+logoFile= "assets/ctlib/icon.png"
+updateJSONURL="https://api.modrinth.com/updates/EFNVfB1s/forge_updates.json" #optional
+displayURL="https://modrinth.com/mod/ctlibmod" #optional
+authors="CrystalNeko" #optional
+description='''A library for data storage and more operations.'''

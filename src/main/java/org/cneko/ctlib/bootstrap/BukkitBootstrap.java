@@ -1,8 +1,8 @@
 package org.cneko.ctlib.bootstrap;
 
 
-import net.byteflux.libby.BukkitLibraryManager;
-import net.byteflux.libby.LibraryManager;
+import com.alessiodp.libby.BukkitLibraryManager;
+import com.alessiodp.libby.LibraryManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.cneko.ctlib.Meta;
 import org.cneko.ctlib.plugin.util.LibrariesLoader;

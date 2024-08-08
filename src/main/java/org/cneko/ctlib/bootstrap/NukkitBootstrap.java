@@ -1,8 +1,8 @@
 package org.cneko.ctlib.bootstrap;
 
 import cn.nukkit.plugin.PluginBase;
-import net.byteflux.libby.LibraryManager;
-import net.byteflux.libby.NukkitLibraryManager;
+import com.alessiodp.libby.LibraryManager;
+import com.alessiodp.libby.NukkitLibraryManager;
 import org.cneko.ctlib.plugin.util.LibrariesLoader;
 
 public class NukkitBootstrap extends PluginBase {

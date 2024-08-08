@@ -34,6 +34,7 @@ repositories {
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
     }
     maven { url = 'https://oss.sonatype.org/content/groups/public/' }
+    maven { url = 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
     maven{
         name = 'Forge'
         url = 'https://files.minecraftforge.net/maven/'
@@ -47,6 +48,10 @@ repositories {
         url = "https://repo.alessiodp.com/releases/"
     }
     maven { url 'https://jitpack.io' }
+
+    maven {
+        url "https://maven.neoforged.net/releases"
+    }
 
     mavenCentral()
 }
@@ -69,16 +74,16 @@ shadowJar {
         }
         if (loader == "Fabric") {
             //include(dependency("commons-codec:commons-codec:1.15"))
-            include(dependency("org.xerial:sqlite-jdbc:3.41.2.2"))
+            //include(dependency("org.xerial:sqlite-jdbc:3.41.2.2"))
             include(dependency(name: 'snakeyaml-2.2'))
         }
-        if(loader == "Fabric" || loader == "Bukkit") {
-            include(dependency("net.byteflux:libby-velocity:1.3.0"))
-            include(dependency("net.byteflux:libby-core:1.3.0"))
-            include(dependency("net.byteflux:libby-bukkit:1.3.0"))
-            include(dependency("net.byteflux:libby-paper:1.3.0"))
-            include(dependency("net.byteflux:libby-slf4j:1.1.5"))
-            include(dependency("net.byteflux:libby-nukkit:1.3.0"))
+        if(loader == "Bukkit") {
+            include(dependency(":libby-velocity:2.0.0"))
+            include(dependency("com.alessiodp.libby:libby-core:2.0.0-SNAPSHOT"))
+            include(dependency("com.alessiodp.libby:libby-bukkit:2.0.0-SNAPSHOT"))
+            //include(dependency("com.alessiodp.libby:libby-paper:2.0.0-SNAPSHOT"))
+            //include(dependency("com.alessiodp.libby:libby-slf4j:2.0.0-SNAPSHOT"))
+            include(dependency("com.alessiodp.libby:libby-nukkit:2.0.0-SNAPSHOT"))
         }
 
 
@@ -98,15 +103,20 @@ dependencies {
     implementation 'org.xerial:sqlite-jdbc:3.41.2.2'
     implementation "com.velocitypowered:velocity-api:3.2.0-SNAPSHOT"
     annotationProcessor "com.velocitypowered:velocity-api:3.2.0-SNAPSHOT"
-    implementation 'net.byteflux:libby-velocity:1.3.0'
-    implementation 'net.byteflux:libby-core:1.3.0'
-    implementation "net.byteflux:libby-bukkit:1.3.0"
-    implementation "net.byteflux:libby-paper:1.3.0"
-    implementation 'net.byteflux:libby-slf4j:1.1.5'
-    implementation 'net.byteflux:libby-nukkit:1.3.0'
+    implementation 'com.alessiodp.libby:libby-velocity:2.0.0-SNAPSHOT'
+    implementation 'com.alessiodp.libby:libby-core:2.0.0-SNAPSHOT'
+    implementation "com.alessiodp.libby:libby-bukkit:2.0.0-SNAPSHOT"
+    //implementation "com.alessiodp.libby:libby-paper:2.0.0-SNAPSHOT"
+    //implementation 'com.alessiodp.libby:libby-slf4j:2.0.0-SNAPSHOT'
+    implementation 'com.alessiodp.libby:libby-nukkit:2.0.0-SNAPSHOT'
     implementation name: 'snakeyaml-2.2'
     implementation name: 'nukkit-1.0-SNAPSHOT'
     implementation name: 'forge-java11-0.0.1'
+
+    //compileOnly "net.neoforged.fancymodloader:loader:4.0.22"
+    //compileOnly "net.neoforged.fancymodloader:core:2.0.7"
+//    compileOnly name: "neo-bus-8.0.1"
+//    compileOnly name: "neo-fml-loader-4.0.23"
 
 }
 
@@ -121,6 +131,9 @@ processResources {
         expand "version": project.version
     }
     filesMatching("plugin.nukkit.yml") {
+        expand "version": project.version
+    }
+    filesMatching("META-INF/neoforge.mods.toml") {
         expand "version": project.version
     }
     filesMatching("META-INF/mods.toml") {

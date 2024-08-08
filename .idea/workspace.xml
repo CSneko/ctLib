@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd7b4121-9d6f-4ba3-b52f-1cf706d9cd0d" name="更改" comment="添加构建脚本">
+      <change afterPath="$PROJECT_DIR$/libs/neo-bus-8.0.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/neo-fml-loader-4.0.23.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/neoforge.mods.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/BukkitBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/BukkitBootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/NeoForgeBootstrap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/NukkitBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/NukkitBootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/VelocityBootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/bootstrap/VelocityBootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/plugin/util/LibrariesLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/cneko/ctlib/plugin/util/LibrariesLoader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +49,17 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="ctLibFabric" type="f1a62948:ProjectNode" />
+                <item name="ctLib" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ctLib" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ctLib" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
             </expand>
             <select />
@@ -77,8 +101,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/CSneko/ctLib.git&quot;,
-    &quot;accountId&quot;: &quot;2ed95e2a-c14a-417d-835b-4eee59706e09&quot;
+    &quot;url&quot;: &quot;git@github.com:CSneko/ctLib.git&quot;,
+    &quot;accountId&quot;: &quot;c85b6ef7-ef34-430b-85f7-0b45d6c0367e&quot;
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -93,7 +117,7 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2WZosAGXRwvbSX5e46DWHzpAI3w" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -104,8 +128,10 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.ctLib [generateTemplates].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ctLibFabric [:ModBootstrap.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ctLibFabric [:StringUtil.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ctLibFabric [dependencies].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ctLibFabric [generateTemplates].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ctLibFabric build.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ctLib[BFV].executor&quot;: &quot;Run&quot;,
@@ -116,7 +142,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/media/crystalneko/BA106C158B1B58EF/libs/gradle/gradle-8.7&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/crystalneko/00053615000A874B/java/libs/gradle/gradle-8.8&quot;,
     &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.6310345&quot;,
@@ -154,6 +180,28 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="ctLib [processResources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="processResources" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
     </configuration>
     <configuration name="ctLibFabric [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -252,6 +300,7 @@
       <item itemvalue="Gradle.ctLibFabric build" />
       <item itemvalue="Gradle.ctLib[BFV]" />
       <item itemvalue="Gradle.ctLib[Fabric]" />
+      <item itemvalue="Gradle.ctLib [processResources]" />
       <item itemvalue="Gradle.ctLibFabric [dependencies]" />
       <item itemvalue="应用程序.Minecraft Server" />
       <item itemvalue="应用程序.Minecraft Client" />
@@ -259,8 +308,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.ModBootstrap" />
+        <item itemvalue="Gradle.ctLib [processResources]" />
         <item itemvalue="Gradle.ctLibFabric [dependencies]" />
+        <item itemvalue="应用程序.ModBootstrap" />
       </list>
     </recent_temporary>
   </component>

@@ -7,10 +7,7 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.PluginManager;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
-import net.byteflux.libby.LibraryManager;
-import net.byteflux.libby.VelocityLibraryManager;
 import org.cneko.ctlib.Meta;
-import org.cneko.ctlib.plugin.util.LibrariesLoader;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -33,8 +30,8 @@ public class VelocityBootstrap {
     public void onProxyInitialization(ProxyInitializeEvent event) {
         Meta.INSTANCE.setSlf4jLogger(logger);
         //初始化load
-        final LibraryManager libraries = new VelocityLibraryManager<>(
+        /*final LibraryManager libraries = new VelocityLibraryManager<>(
                 logger, dataDirectory, pluginManager, this);
-        LibrariesLoader.setManager(libraries);
+        LibrariesLoader.setManager(libraries);*/
     }
 }
